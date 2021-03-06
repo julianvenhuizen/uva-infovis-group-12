@@ -1,0 +1,72 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>{% block title %}{% endblock %}</title>
+
+	<!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- D3 package -->
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+
+	<style>
+		p, .txt {  text-align: justify;
+  			 text-justify: inter-word;
+  			}
+  		#l-column {
+  				background-color: #3386AE;
+  				color: white;
+  				padding: 40px;
+  			}
+  		#r-column {
+  				background-color: white;
+  				padding: 40px;
+  			}
+  		#europe-map {
+  			}
+
+  		#time-slider {
+  			}
+	</style>
+</head>
+<body>
+	<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap navbar-expand-md" id="navbar-top">
+		<div class="navbar-collapse" id="navbarCollapse">
+			<ul class="navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" id="nav-link-home" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link"  id="nav-link-d3" href="/d3">D3</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<main role="main" class="flex-shrink-0">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-4" id="l-column">
+					{% block leftColumn %}
+					{% endblock %}
+				</div>
+				<div class="col-lg-8" id="r-column">
+					<div class="row" id="europe-map">
+						{% block europeMap %}
+						{% endblock %}
+					</div>
+					<div class="row" id="time-slider">
+						{% block timeSlider %}
+						{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
