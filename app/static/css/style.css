@@ -1,0 +1,22 @@
+p, .txt {  text-align: justify;
+  			 text-justify: inter-word;
+  	}
+#l-column {
+        background-color: #3386AE;
+        color: white;
+        padding: 40px;
+    }
+#r-column {
+        background-color: white;
+        padding: 40px;
+    }
+.europe-map {
+        padding: 0;
+    }
+
+.europe-map path {
+        fill: #3386AE;
+    }
+
+#time-slider {
+    }
