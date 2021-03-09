@@ -16,7 +16,19 @@ p, .txt {  text-align: justify;
 
 .europe-map path {
         fill: #3386AE;
+        stroke: white;
+        stroke-width; 4px;
+        transition: fill 0.3s;
+    }
+
+.europe-map :hover {
+        fill: 0F5A7F;
+    }
+
+.europe-map :visited {
+        fill: E9860F;
     }
 
 #time-slider {
+
     }
