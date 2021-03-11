@@ -14,15 +14,18 @@ p, .txt {  text-align: justify;
         padding: 0;
     }
 
-.europe-map path {
+.eu path {
         fill: #3386AE;
         stroke: white;
         stroke-width; 4px;
         transition: fill 0.3s;
     }
 
-.non-eu-country {
+.non-eu path {
         fill: #C2C2C2;
+        stroke: white;
+        stroke-width; 4px;
+        transition: fill 0.3s;
     }
 
 .europe-map:hover {
