@@ -8,31 +8,51 @@ p, .txt {  text-align: justify;
     }
 #r-column {
         background-color: white;
-        padding: 40px;
+        padding: 0px;
     }
 .europe-map {
-        padding: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        grid-template-areas: "inners";
+        z-index: -2;
     }
 
-.eu path {
+.eu-countries {
+        grid-area: inners;
+        height: 100%;
+        width: 100%;
+        z-index: 2;
+    }
+
+.non-eu-countries {
+        grid-area: inners;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+.eu-countries path {
         fill: #3386AE;
         stroke: white;
         stroke-width; 4px;
         transition: fill 0.3s;
     }
 
-.non-eu path {
+.non-eu-countries path {
         fill: #C2C2C2;
         stroke: white;
         stroke-width; 4px;
         transition: fill 0.3s;
     }
 
-.europe-map:hover {
+.eu-countries path:hover {
         fill: #0F5A7F;
     }
 
-.europe-map:visited {
+.selected-main-country path {
         fill: #E9860F;
     }
 
