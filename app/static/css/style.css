@@ -52,10 +52,6 @@ p, .txt {  text-align: justify;
         fill: #0F5A7F;
     }
 
-.selected-main-country path {
-        fill: #E9860F;
-    }
-
 #time-slider {
 
     }
