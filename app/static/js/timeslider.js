@@ -1,12 +1,7 @@
 var slider = document.getElementById("myRange");
-var output = document.getElementById("year");
 
-
-// Update the current slider value (each time you drag the slider handle)
+// Update variable year with current slider value and display (each time you drag the slider handle)
 slider.oninput = function() {
-  	output.value = slider.value;
-}
-
-output.oninput = function() {
-  	slider.value = output.value;
+	var year = slider.value
+  	document.getElementById("yeardisplay").innerHTML = year;
 }
