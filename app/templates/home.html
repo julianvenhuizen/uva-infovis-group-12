@@ -81,22 +81,20 @@
 {% block timeSlider %}
 
 <!-- Timeslider HTML -->
+    <!-- Display year variable as HTML above the timeslider -->
+    <p class="yeardisplay" id="yeardisplay">
+        2019
+    </p>
 <div class="slidecontainer">
-  <input type="range" min="2013" max="2019" value="2019" class="slider" id="myRange">
+    <p class="minimumyear">
+        2013
+    </p>
+    <!-- The actual timeslider -->
+    <input type="range" min="2013" max="2019" value="2019" class="slider" id="myRange">
+    <p class="maximumyear">
+        2019
+    </p>
 </div>
-
-<!-- This is a dummy dropdown menu for testing inputting/outputting timeslider value -->
-<form id="reservation">
-  <select name="year" id="year">
-    <option>2013</option>
-    <option>2014</option>
-    <option>2015</option>
-    <option>2016</option>
-    <option>2017</option>
-    <option>2018</option>
-    <option>2019</option>
-  </select>
-</form>
 
 <!-- JS for timeslider -->
 <script src="static/js/timeslider.js"></script>

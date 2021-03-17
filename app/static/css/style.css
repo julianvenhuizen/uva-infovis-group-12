@@ -55,15 +55,36 @@ p, .txt {  text-align: justify;
 
 
 /* Timeslider CSS */
+.time-slider {
+  width: 100%;
+  margin-bottom: 5%;
+}
+
+.yeardisplay{
+  text-align: center;
+  font-size: 250%;
+}
 
 .slidecontainer {
   width: 100%; /* Width of the outside container */
+  display: inline-block;
+}
+
+.minimumyear{
+  width: 10%;
+  display: inline-block;
+  text-align: right;
+}
+
+.maximumyear{
+  width: 10%;
+  display: inline-block;
 }
 
 /* The slider itself */
 .slider {
   -webkit-appearance: none;
-  width: 75%;
+  width: 79%;
   height: 15px;
   border-radius: 5px;  
   background: #C2C2C2;
@@ -71,8 +92,7 @@ p, .txt {  text-align: justify;
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
-  margin-left: 150px;
-  margin-right: 50px;
+  display: inline-block;
 }
 
 /* Mouse-over effects */
