@@ -6,9 +6,15 @@ function changeColor(country) {
     if (!selectedCountries.includes(country.id)) {
         country.style.fill = "#E9860F";
         selectedCountries = selectedCountries.concat(country.id);
+        console.log(selectedCountries)
 
         // Display first country in array
-        document.getElementById("title_or_countryname").innerHTML = selectedCountries[0];
+        var text = " ";
+        var x;
+        for (x in selectedCountries) {
+            text += selectedCountries[x] + ", ";
+        }
+        document.getElementById("title_or_countryname").innerHTML = text;
     }
     // If country is in array ("selected"): deselect and return to blue color
     else {
@@ -21,7 +27,12 @@ function changeColor(country) {
             document.getElementById("title_or_countryname").innerHTML = "No country is selected";
         }
         else {
-            document.getElementById("title_or_countryname").innerHTML = selectedCountries[0];
+            var text = " ";
+            var x;
+            for (x in selectedCountries) {
+                text += selectedCountries[x] + ", ";
+        }
+        document.getElementById("title_or_countryname").innerHTML = text;
         }
     }
 }
