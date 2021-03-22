@@ -1,5 +1,3 @@
-var selectedCountries = [];
-
 // Function that changes the color and adds country ID to the array
 // Also displays the first country in the array
 function changeColor(country) {
@@ -8,13 +6,9 @@ function changeColor(country) {
         selectedCountries = selectedCountries.concat(country.id);
         console.log(selectedCountries)
 
-        // Display first country in array
-        var text = " ";
-        var x;
-        for (x in selectedCountries) {
-            text += selectedCountries[x] + ", ";
-        }
-        document.getElementById("title_or_countryname").innerHTML = text;
+        // Display last country in array
+        nItems = selectedCountries.length
+        document.getElementById("title_or_countryname").innerHTML = selectedCountries[nItems-1];
     }
     // If country is in array ("selected"): deselect and return to blue color
     else {
@@ -22,19 +16,17 @@ function changeColor(country) {
 
         selectedCountries = arrayRemove(selectedCountries, country.id);
         
-        // Display first country in array if any, else display some string
+        // Display last country in array if any, else display some string
         if (selectedCountries.length < 1) {
             document.getElementById("title_or_countryname").innerHTML = "No country is selected";
         }
         else {
-            var text = " ";
-            var x;
-            for (x in selectedCountries) {
-                text += selectedCountries[x] + ", ";
-        }
-        document.getElementById("title_or_countryname").innerHTML = text;
+            nItems = selectedCountries.length
+            document.getElementById("title_or_countryname").innerHTML = selectedCountries[nItems-1];
         }
     }
+    updateLeftColumn();
+    printCountryList();
 }
 
 // Function needed to deselect country, don't touch this please 

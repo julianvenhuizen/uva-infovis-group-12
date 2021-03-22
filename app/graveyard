@@ -168,3 +168,28 @@
 						</div>
 
 
+#panel-contents {
+        width: 90%;
+        height: 90%;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        grid-template-areas: "inners";
+        z-index: -2;
+    }
+
+#instructions-panel {
+    background-color: black;
+    grid-area: inners;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+#graphs-panel {
+    background-color: white;
+    grid-area: inners;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}

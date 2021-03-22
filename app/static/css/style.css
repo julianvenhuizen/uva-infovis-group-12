@@ -127,3 +127,27 @@ p, .txt {  text-align: justify;
   cursor: pointer;
 }
 
+#panel-contents {
+        width: 90%;
+        height: 90%;
+        margin: 0 auto;
+        display: grid;
+        place-items: center;
+        grid-template-areas: "inners";
+        z-index: -2;
+    }
+
+#instructions-panel {
+    grid-area: inners;
+    height: 100%;
+    width: 100%;
+    z-index: 2;
+}
+
+#graphs-panel {
+    display: none;
+    grid-area: inners;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
