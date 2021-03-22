@@ -52,7 +52,9 @@ p, .txt {  text-align: justify;
         fill: #0F5A7F;
     }
 
-
+.selected-country {
+        fill: #E9860F !important;
+}
 
 /* Timeslider CSS */
 .time-slider {

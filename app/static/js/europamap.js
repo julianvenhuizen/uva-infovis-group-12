@@ -4,7 +4,7 @@ var selectedCountries = [];
 // Also displays the first country in the array
 function changeColor(country) {
     if (!selectedCountries.includes(country.id)) {
-        country.style.fill = "#E9860F";
+        country.classList.add("selected-country");
         selectedCountries = selectedCountries.concat(country.id);
 
         // Display first country in array
@@ -12,7 +12,7 @@ function changeColor(country) {
     }
     // If country is in array ("selected"): deselect and return to blue color
     else {
-        country.style.fill = "#3386AE";
+        country.classList.remove("selected-country");
 
         selectedCountries = arrayRemove(selectedCountries, country.id);
         
