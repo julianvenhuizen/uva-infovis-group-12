@@ -14,6 +14,8 @@ var nodeData = {
     }]
 };
 
+// Data to dict
+
 // Variables
 var width = 350;
 var height = 350;
