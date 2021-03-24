@@ -1,14 +1,13 @@
 import pandas as pd
 
 data = pd.read_csv("app/data/EUdataExpenditures.csv")
+data = data[data.Year == 2014]
+print(data)
 
 # Data structure per country
-structure = {"1":{"1.1":{"1.1.1":{"1.1.10":0,
-                                  "1.1.11":0,
+structure = {"1":{"1.1":{"1.1.1":{"1.1.11":0,
                                   "1.1.12":0,
-                                  "1.1.13":0,
-                                  "1.1.14":0,
-                                  "1.1.15":0},
+                                  "1.1.13":0},
                          "1.1.2":0,
                          "1.1.3":{"1.1.31":0,
                                   "1.1.32":0},
@@ -34,7 +33,6 @@ structure = {"1":{"1.1":{"1.1.1":{"1.1.10":0,
                                   "1.2.32":0},
                          "1.2.4":0,
                          "1.2.5":0,
-                         "1.2.6":0,
                          "1.2.DAG":0,
                          "1.2.OTH":0,
                          "1.2.PPA":0,
@@ -59,7 +57,6 @@ structure = {"1":{"1.1":{"1.1.1":{"1.1.10":0,
                  "3.0.9":0,
                  "3.0.10":0,
                  "3.0.11":0,
-                 "3.0.12":0,
                  "3.0.DAG":0,
                  "3.0.OTH":0,
                  "3.0.PPA":0,
@@ -80,7 +77,7 @@ def countryDict(data, country):
 
     # Depth 1
     for k1 in structure.keys():
-        category1 = data.loc[data['ID'] == k1, 'Entry'][0]
+        category1 = data.loc[data['ID'] == k1, 'Entry'].item()
         print("cat1: ", category1)
         print(country_dict)
         if structure[k1] != 0:
@@ -89,7 +86,8 @@ def countryDict(data, country):
             # Depth 2
             for k2 in structure[k1]:
                 print("k2: ", k2)
-                category2 = data.loc[data['ID'] == k2, 'Entry'][0]
+                print("DATA LOC CAT 2:" + data.loc[data['ID'] == k2, 'Entry'])
+                category2 = data.loc[data['ID'] == k2, 'Entry'].item()
                 print("cat2: ", category2)
                 print(country_dict)
                 print(structure[k1][k2])
@@ -99,7 +97,7 @@ def countryDict(data, country):
 
                     # Depth 3
                     for k3 in structure[k1][k2]:
-                        category3 = data.loc[data['ID'] == k3, 'Entry'][0]
+                        category3 = data.loc[data['ID'] == k3, 'Entry'].item()
                         print("cat3: ", category3)
                         print(country_dict)
                         if structure[k1][k2][k3] != 0:
@@ -108,19 +106,21 @@ def countryDict(data, country):
                             # Depth 4
                             for k4 in structure[k1][k2][k3]:
                                 print(k4, structure[k1][k2][k3][k4])
-                                category4 = data.loc[data['ID'] == k4, 'Entry'][0]
+                                print("DATA LOC CAT 4: " + data.loc[data['ID'] == k4, 'Entry'])
+                                category4 = data.loc[data['ID'] == k4, 'Entry'].item()
                                 print("cat4: ", category4)
                                 print(country_dict)
-                                country_dict[category1][category2][category3][category4] = data.loc[data['ID'] == k4, country][0]
+                                country_dict[category1][category2][category3][category4] = data.loc[data['ID'] == k4, country].item()
                         else:
                             print(k3, structure[k1][k2][k3])
-                            country_dict[category1][category2][category3] = data.loc[data['ID'] == k3, country][0]
+                            country_dict[category1][category2][category3] = data.loc[data['ID'] == k3, country].item()
                 else:
                     print(k2, structure[k1][k2])
-                    country_dict[category1][category2] = data.loc[data['ID'] == k2, country][0]
+                    print("ELSE STATEMENT 1")
+                    country_dict[category1][category2] = data.loc[data['ID'] == k2, country].item()
         else:
             print(k1, structure[k1])
-            country_dict[category1] = data.loc[data['ID'] == k1, country][0]
+            country_dict[category1] = data.loc[data['ID'] == k1, country].item()
     return country_dict
 
-countryDict(data[["ID", "Entry", " BE "]]," BE ")
+countryDict = countryDict(data[["Year", "ID", "Entry", " BE "]]," BE ")
