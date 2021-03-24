@@ -78,45 +78,34 @@ def countryDict(data, country):
     # Depth 1
     for k1 in structure.keys():
         category1 = data.loc[data['ID'] == k1, 'Entry'].item()
-        print("cat1: ", category1)
-        print(country_dict)
         if structure[k1] != 0:
             country_dict[category1] = {}
 
             # Depth 2
             for k2 in structure[k1]:
-                print("k2: ", k2)
-                print("DATA LOC CAT 2:" + data.loc[data['ID'] == k2, 'Entry'])
                 category2 = data.loc[data['ID'] == k2, 'Entry'].item()
-                print("cat2: ", category2)
-                print(country_dict)
                 print(structure[k1][k2])
                 if structure[k1][k2] != 0:
                     country_dict[category1][category2] = {}
-                    print("goes here")
+                    # print("goes here")
 
                     # Depth 3
                     for k3 in structure[k1][k2]:
                         category3 = data.loc[data['ID'] == k3, 'Entry'].item()
-                        print("cat3: ", category3)
-                        print(country_dict)
+                        print(structure[k1][k2][k3])
                         if structure[k1][k2][k3] != 0:
                             country_dict[category1][category2][category3] = {}
 
                             # Depth 4
                             for k4 in structure[k1][k2][k3]:
                                 print(k4, structure[k1][k2][k3][k4])
-                                print("DATA LOC CAT 4: " + data.loc[data['ID'] == k4, 'Entry'])
                                 category4 = data.loc[data['ID'] == k4, 'Entry'].item()
-                                print("cat4: ", category4)
-                                print(country_dict)
                                 country_dict[category1][category2][category3][category4] = data.loc[data['ID'] == k4, country].item()
                         else:
                             print(k3, structure[k1][k2][k3])
                             country_dict[category1][category2][category3] = data.loc[data['ID'] == k3, country].item()
                 else:
                     print(k2, structure[k1][k2])
-                    print("ELSE STATEMENT 1")
                     country_dict[category1][category2] = data.loc[data['ID'] == k2, country].item()
         else:
             print(k1, structure[k1])
