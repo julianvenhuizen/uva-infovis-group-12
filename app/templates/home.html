@@ -6,6 +6,11 @@
 	d3.select("#nav-link-home").classed("active", true);
 </script>
 
+<script type="text/javascript">
+     // Check if data is available in log
+    var sunburst_data = {{data|tojson}};
+    console.log(sunburst_data);
+</script>
 
 <!-- Begin page content -->
     <h2 class="mt-3" id="title_or_countryname">Our Project </h2>
@@ -29,8 +34,7 @@
             <script src="static/js/barplotd3.js"></script>
         </div>
     </div>
-
-<script src="static/js/leftcolumn.js"></script>
+<script src="static/js/leftcolumn.js" type="text/javascript"></script>
 
 {% endblock %}
 
@@ -97,11 +101,6 @@
 
 {% block javascript %}
 <script src="static/js/europamap.js"></script>
-<script type="text/javascript"> 
-     // Check if data is available in log
-    var data = {{data|tojson}};
-    console.log(data);
-</script>
 
 {% endblock %}
 {% endblock %}

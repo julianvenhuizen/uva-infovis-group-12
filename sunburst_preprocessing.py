@@ -93,8 +93,6 @@ def countryDict(data, country):
                             # Depth 4
                             for k4 in structure[k1][k2][k3]:
                                 category4 = data.loc[data['ID'] == k4, 'Entry'].item()
-                                print("cat4: ", category4)
-                                print(country_dict)
                                 country_dict[category1][category2][category3][category4] = data.loc[data['ID'] == k4, country].item()
                         else:
                             country_dict[category1][category2][category3] = data.loc[data['ID'] == k3, country].item()
@@ -107,7 +105,7 @@ def countryDict(data, country):
 # countryDict(data[["Year", "ID", "Entry", " BE "]]," BE ")
 
 def convertToDict(data):
-    countries = list(set(data.columns) - set(['Year', 'ID', 'Entry', ' earmarked ', ' other ', ' non-EU ', ' EU-28 ']))
+    countries = list(set(data.columns) - set(['Year', 'ID', 'Entry', 'earmarked', 'other', 'non-EU', 'EU-28']))
     years = [2014, 2015, 2016, 2017, 2018, 2019]
     data_dict = dict()
     for year in years:
@@ -120,5 +118,6 @@ def convertToDict(data):
     return data_dict
 
 product = convertToDict(data)
+print(product)
 with open('app/data/sunburst_data.json', 'w') as file:
     json.dump(product, file)

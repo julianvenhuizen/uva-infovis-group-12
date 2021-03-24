@@ -1,5 +1,6 @@
 var selectedCountries = [];
 var lastSelectedCountry;
+var selectedYear = 2014;
 var countryNames = {
         "AL": "Albania",
         "AT": "Austria",
@@ -56,9 +57,6 @@ function updateLeftColumn() {
 
     // Prints the graphs corresponding to the selected countries
     } else {
-        console.log(selectedCountries);
-
-
         document.getElementById("title_or_countryname").innerHTML = countryNames[lastSelectedCountry];
 
         instructions.style.display = 'none';
@@ -80,8 +78,6 @@ function printCountryList() {
     var numberOfListItems = selectedCountries.length, listItem, i;
     for (i = 0; i < numberOfListItems; ++i) {
         listItem = document.createElement('li');
-        console.log("list item: ");
-        console.log(listItem);
         listItem.innerHTML = selectedCountries[i];
         listElement.appendChild(listItem);
     }
