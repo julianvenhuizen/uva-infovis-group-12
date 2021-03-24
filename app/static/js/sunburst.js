@@ -1,8 +1,5 @@
 function updateSunburst(year, country) {
-    console.log(country);
-    var sunburst_year_data_country = sunburst_data.year;
-    console.log(sunburst_year_data_country)
-    var sunburst_year_data_country = sunburst_year_data_country.country;
+    var sunburst_year_data_country = sunburst_data[year][country];
 
     // Variables
     var width = 350;
