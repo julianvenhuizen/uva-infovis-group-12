@@ -1,8 +1,8 @@
 import pandas as pd
+import json
 
 data = pd.read_csv("app/data/EUdataExpenditures.csv")
-data = data[data.Year == 2014]
-print(data)
+# data = data[data.Year == 2014]
 
 # Data structure per country
 structure = {"1":{"1.1":{"1.1.1":{"1.1.11":0,
@@ -68,9 +68,6 @@ structure = {"1":{"1.1":{"1.1.1":{"1.1.11":0,
              "8":0,
              "9":0}
 
-print(data)
-print(data.columns)
-
 # Takes data belonging to a country and stores it in a hierarchical dict
 def countryDict(data, country):
     country_dict = {}
@@ -84,7 +81,6 @@ def countryDict(data, country):
             # Depth 2
             for k2 in structure[k1]:
                 category2 = data.loc[data['ID'] == k2, 'Entry'].item()
-                print(structure[k1][k2])
                 if structure[k1][k2] != 0:
                     country_dict[category1][category2] = {}
                     # print("goes here")
@@ -92,24 +88,36 @@ def countryDict(data, country):
                     # Depth 3
                     for k3 in structure[k1][k2]:
                         category3 = data.loc[data['ID'] == k3, 'Entry'].item()
-                        print(structure[k1][k2][k3])
                         if structure[k1][k2][k3] != 0:
                             country_dict[category1][category2][category3] = {}
 
                             # Depth 4
                             for k4 in structure[k1][k2][k3]:
-                                print(k4, structure[k1][k2][k3][k4])
                                 category4 = data.loc[data['ID'] == k4, 'Entry'].item()
                                 country_dict[category1][category2][category3][category4] = data.loc[data['ID'] == k4, country].item()
                         else:
-                            print(k3, structure[k1][k2][k3])
                             country_dict[category1][category2][category3] = data.loc[data['ID'] == k3, country].item()
                 else:
-                    print(k2, structure[k1][k2])
                     country_dict[category1][category2] = data.loc[data['ID'] == k2, country].item()
         else:
-            print(k1, structure[k1])
             country_dict[category1] = data.loc[data['ID'] == k1, country].item()
-    return country_dict
+    return {country:country_dict}
 
-countryDict = countryDict(data[["Year", "ID", "Entry", " BE "]]," BE ")
+# countryDict(data[["Year", "ID", "Entry", " BE "]]," BE ")
+
+def convertToDict(data):
+    countries = list(set(data.columns) - set(['Year', 'ID', 'Entry', ' earmarked ', ' other ', ' non-EU ', ' EU-28 ']))
+    years = [2014, 2015, 2016, 2017, 2018, 2019]
+    data_dict = dict()
+    for year in years:
+        print(year)
+        year_data = data[data.Year == year]
+        countries_dict = dict()
+        for country in countries:
+            countries_dict.update(countryDict(year_data[["ID", "Entry", country]], country))
+        data_dict[year] = countries_dict
+    return data_dict
+
+product = convertToDict(data)
+with open('app/data/sunburst_data.json', 'w') as file:
+    json.dump(product, file)
