@@ -1,6 +1,7 @@
 function updateSunburst(year, country) {
     var sunburst_year_data_country = sunburst_data[year][country];
-
+    var sunburst_year_data_country = {"rootnode":sunburst_year_data_country};
+    console.log(sunburst_year_data_country)
     // Variables
     var width = 350;
     var height = 350;
