@@ -1,18 +1,17 @@
 function updateSunburst(year, country) {
     var sunburst_year_data_country = sunburst_data[year][country];
-    var sunburst_year_data_country = {"rootnode":sunburst_year_data_country};
-    console.log(sunburst_year_data_country)
-    
+    console.log(sunburst_year_data_country);
+
     // Hardcode fake data for EU Country
     var nodeData = {
         "name": "Belgium", "children": [{
             "name": "Smart and inclusive growth",
-            "children": [{"name": "Competitiveness for growth and jobs", "children": [{"name": "Large infrastructure projects", "size":1830}, 
+            "children": [{"name": "Competitiveness for growth and jobs", "children": [{"name": "Large infrastructure projects", "size":1830},
                                                                                     {"name":"Nuclear decommissioning assistance programmes", "size":165},
                                                                                     {"name":"Common Strategic Framework (CSF) Research and Innovation", "children":[
                                                                                         {"name":"Framework Programme for Research and Innovation", "size":7414},
                                                                                         {"name":"Euratom Research and Training Programme", "size":228.4}]}],
-                                                                                    }, 
+                                                                                    },
                                                                                     {"name": "Programme for the Competitiveness of Enterprises and small and medium-sized enterprises", "size": 237},
                                                                                     {"name": "The Union Programme for Education, Training, Youth and Sport", "size":1510},
                                                                                     {"name":"European Union Programme for Employment and Social Innovation", "size":83.7},
@@ -57,7 +56,7 @@ function updateSunburst(year, country) {
                 {"name": "Pilot projects and preparatory actions", "size":11.4},
                 {"name": "Actions financed under the prerogatives of the Commission and specific competences conferred to the Commission", "size":170.2}]
         }, {
-            "name": "GLOBAL EUROPE", 
+            "name": "GLOBAL EUROPE",
             "children": [
                 {"name": "Instrument for Pre-accession Assistance (IPA)", "size": 1314.60},
                 {"name": "Other", "size": 5891.20}
@@ -72,8 +71,8 @@ function updateSunburst(year, country) {
             "name": "SPECIAL INSTRUMENTS", "size": 464.9
         }]
     };
-    
-    
+    console.log("IM HERE");
+    console.log(nodeData);
     
     // Variables
     var width = 350;
@@ -93,7 +92,7 @@ function updateSunburst(year, country) {
         .size([2 * Math.PI, radius]);
 
     // Find data root
-    var root = d3.hierarchy(nodeData)
+    var root = d3.hierarchy(sunburst_year_data_country)
         .sum(function (d) { return d.size});
 
     // Size arcs

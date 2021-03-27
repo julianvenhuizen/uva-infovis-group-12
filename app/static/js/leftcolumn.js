@@ -14,8 +14,8 @@ var countryNames = {
         "DK": "Denmark",
         "EE": "Estonia",
         "FI": "Finland",
-        "GB": "United Kingdom",
-        "GR": "Greece",
+        "UK": "United Kingdom",
+        "EL": "Greece",
         "HR": "Croatia",
         "HU": "Hungary",
         "IE": "Ireland",
@@ -38,7 +38,9 @@ var countryNames = {
         "SE": "Sweden",
         "UA": "Ukraine",
         "FR": "France",
-        "ES": "Spain"
+        "ES": "Spain",
+        "CY": "Cyprus",
+        "MT": "Malta"
     };
 
 // Displays instructions when no country is selected and otherwise the graphs
