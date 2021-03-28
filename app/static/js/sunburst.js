@@ -1,4 +1,17 @@
+
+
 function updateSunburst(year, country) {
+
+  removeoldSunburst();
+  createNewSunburst(year, country);
+}
+
+function removeoldSunburst() {
+    d3.select("#sunburst")
+        .remove();
+}
+
+function createNewSunburst(year, country) {
     var sunburst_year_data_country = sunburst_data[year][country];
     console.log(sunburst_year_data_country);
 
@@ -136,8 +149,12 @@ const textFits = d => {
   return d.data.name.length * CHAR_SPACE < perimeter;
 };
 
+d3.select("#sunburst_container")
+  .append("sunburst")
+    .attr("id", "sunburst")
+
 const svg = d3
-  .select('body')
+  .select('#sunburst')
   .append('svg')
   .style('width', '100vw')
   .style('height', '100vh')
