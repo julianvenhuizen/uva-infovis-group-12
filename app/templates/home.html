@@ -8,8 +8,11 @@
 
 <script type="text/javascript">
      // Check if data is available in log
-    var sunburst_data = {{data|tojson}};
+    var data = {{data|tojson}};
+    var sunburst_data = data[0];
+    var barplot_data = data[1];
     console.log(sunburst_data);
+    console.log(barplot_data);
 </script>
 
 <!-- Begin page content -->
