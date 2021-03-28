@@ -56,8 +56,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   var barchartdata = alldata[selectedBudget];
 
   // List of subgroups
-  var subgroups = selectedCountries
-  //var subgroups = ["The Netherlands", "Belgium", "France"];
+  var subgroups = selectedCountries;
 
   // List of groups -> I show them on the X axis
   var groups = d3.map(barchartdata, function(d){return(d.Year)}).keys()
@@ -73,10 +72,21 @@ function createNewChart(selectedCountries, selectedBudget) {
 
   // Add Y axis
   var y = d3.scaleLinear()
+    .range([ height, 0 ])
     .domain([0, 100]) // !!! this needs to be changed for higher values to be shown !!!
-    .range([ height, 0 ]);
-  svg.append("g")
-    .call(d3.axisLeft(y));
+    //.domain([0, d3.max(barchartdata, function(subgroups) { return d3.max(subgroups.values, function(d) { return d.value; }); })])
+    ;
+  // var yAxis = svg.append("g")
+  //   .attr("class", "myYaxis")
+  svg.append("g").call(d3.axisLeft(y));
+
+  
+  // highestnums = []
+  // for (i = 0; i < subgroups.length; i++) {
+  //   highestnums.push(d3.max(barchartdata, d => d.subgroups[i]));
+  // };
+
+  // console.log(highestnums);
 
   // Another scale for subgroup position?
   var xSubgroup = d3.scaleBand()
@@ -89,7 +99,7 @@ function createNewChart(selectedCountries, selectedBudget) {
     .domain(subgroups)
     .range(['#e41a1c','#377eb8','#4daf4a'])
 
-  // Show the bars
+  // Show the bars (start at 0 height for animation)
   svg.append("g")
     .selectAll("g")
     // Enter in data = loop group per group
@@ -101,10 +111,16 @@ function createNewChart(selectedCountries, selectedBudget) {
     .data(function(d) { return subgroups.map(function(key) { return {key: key, value: d[key]}; }); })
     .enter().append("rect")
       .attr("x", function(d) { return xSubgroup(d.key); })
-      .attr("y", function(d) { return y(d.value); })
+      .attr("y", function(d) { return y(0); })
       .attr("width", xSubgroup.bandwidth())
+      .attr("height", function(d) { return height - y(0); })
+      .attr("fill", function(d) { return color(d.key); })
+      .transition()
+      .duration(400)
+      .attr("y", function(d) { return y(d.value); })
       .attr("height", function(d) { return height - y(d.value); })
-      .attr("fill", function(d) { return color(d.key); });
+      //.delay(function(d,i){console.log(i) ; return(i*10)})
+      ;
 
 
     // Add legend
@@ -121,7 +137,7 @@ function createNewChart(selectedCountries, selectedBudget) {
         .attr("r", 7)
         .style("fill", function(d){ return color(d)})
 
-    // Add one dot in the legend for each name.
+    // Add one label next to the dot in the legend for each name.
     svg.selectAll("mylabels")
       .data(subgroups)
       .enter()
