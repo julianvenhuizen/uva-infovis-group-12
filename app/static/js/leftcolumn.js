@@ -1,6 +1,7 @@
 var selectedCountries = [];
 var lastSelectedCountry;
 var selectedYear = 2014;
+var selectedBudget = "SMART AND INCLUSIVE GROWTH";
 var countryNames = {
         "AL": "Albania",
         "AT": "Austria",
