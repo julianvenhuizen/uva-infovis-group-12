@@ -35,27 +35,26 @@ function createNewChart(selectedCountries, selectedBudget) {
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-
-  var alldata = 
-  
-  {"Total":
-  [{"Year": "2014", "NL": "1", "DE": "0", "BE": "5", "FR": "6"},
-  {"Year": "2015", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}, 
-  {"Year": "2016", "NL": "3", "DE": "0", "BE": "5", "FR": "4"}, 
-  {"Year": "2017", "NL": "4", "DE": "0", "BE": "5", "FR": "3"}, 
-  {"Year": "2018", "NL": "5", "DE": "0", "BE": "5", "FR": "2"}, 
-  {"Year": "2019", "NL": "6", "DE": "0", "BE": "5", "FR": "1"}],
-  "Coffee money":
-  [{"Year": "2014", "The Netherlands": "2", "DE": "0", "BE": "4", "FR": "9"},
-  {"Year": "2015", "NL": "2", "DE": "0", "BE": "4", "FR": "4"}, 
-  {"Year": "2016", "NL": "2", "DE": "0", "BE": "4", "FR": "6"}, 
-  {"Year": "2017", "NL": "2", "DE": "0", "BE": "4", "FR": "3"}, 
-  {"Year": "2018", "NL": "2", "DE": "0", "BE": "5", "FR": "2"}, 
-  {"Year": "2019", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}]
-  };
+//  var alldata =
+//
+//  {"Total":
+//  [{"Year": "2014", "NL": "1", "DE": "0", "BE": "5", "FR": "6"},
+//  {"Year": "2015", "NL": "2", "DE": "0", "BE": "5", "FR": "5"},
+//  {"Year": "2016", "NL": "3", "DE": "0", "BE": "5", "FR": "4"},
+//  {"Year": "2017", "NL": "4", "DE": "0", "BE": "5", "FR": "3"},
+//  {"Year": "2018", "NL": "5", "DE": "0", "BE": "5", "FR": "2"},
+//  {"Year": "2019", "NL": "6", "DE": "0", "BE": "5", "FR": "1"}],
+//  "Coffee money":
+//  [{"Year": "2014", "The Netherlands": "2", "DE": "0", "BE": "4", "FR": "9"},
+//  {"Year": "2015", "NL": "2", "DE": "0", "BE": "4", "FR": "4"},
+//  {"Year": "2016", "NL": "2", "DE": "0", "BE": "4", "FR": "6"},
+//  {"Year": "2017", "NL": "2", "DE": "0", "BE": "4", "FR": "3"},
+//  {"Year": "2018", "NL": "2", "DE": "0", "BE": "5", "FR": "2"},
+//  {"Year": "2019", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}]
+//  };
 
   // The selected (part of the) budget
-  var barchartdata = alldata[selectedBudget];
+  var barchartdata = barplot_data[selectedBudget];
 
   // List of subgroups
   var subgroups = selectedCountries;
@@ -75,7 +74,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   // Add Y axis
   var y = d3.scaleLinear()
     .range([ height, 0 ])
-    .domain([0, 100]) // !!! this needs to be changed for higher values to be shown !!!
+    .domain([0, 10000]) // !!! this needs to be changed for higher values to be shown !!!
     //.domain([0, d3.max(barchartdata, function(subgroups) { return d3.max(subgroups.values, function(d) { return d.value; }); })])
     ;
   // var yAxis = svg.append("g")

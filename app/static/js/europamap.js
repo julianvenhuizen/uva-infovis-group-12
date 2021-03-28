@@ -23,7 +23,7 @@ function selectCountry(country) {
 //    console.log(lastSelectedCountry);
     updateSunburst(selectedYear, lastSelectedCountry);
 
-    updateBarchart(selectedCountries, "Coffee money");
+    updateBarchart(selectedCountries, selectedBudget);
 }
 
 // Function needed to deselect country, don't touch this please 
