@@ -174,3 +174,7 @@ body {
     height: 40%;
     border-top: 1px solid #C2C2C2;
 }
+
+#barplot {
+    background-color: white;
+}

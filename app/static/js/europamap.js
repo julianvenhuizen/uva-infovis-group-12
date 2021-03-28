@@ -22,6 +22,8 @@ function selectCountry(country) {
 //    console.log("last country");
 //    console.log(lastSelectedCountry);
     updateSunburst(selectedYear, lastSelectedCountry);
+
+    updateBarchart()
 }
 
 // Function needed to deselect country, don't touch this please 

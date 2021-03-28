@@ -10,6 +10,11 @@ def index():
 	EUdata = json.load(filename)
 	return render_template("home.html", data = EUdata)
 
+@main.route('/', methods=['GET'])
+def index2():
+	filename = open('app/data/BarplotTestData.csv')
+	BarplotTestData = json.load(filename)
+	return render_template("home.html", BarplotTestData = BarplotTestData)
 
 
 
