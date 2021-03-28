@@ -38,13 +38,15 @@ function createNewChart(selectedCountries, selectedBudget) {
 
   var alldata = 
   
-  {"Total": [{"Year": "2014", "NL": "1", "DE": "0", "BE": "5", "FR": "6"}, 
+  {"Total":
+  [{"Year": "2014", "NL": "1", "DE": "0", "BE": "5", "FR": "6"},
   {"Year": "2015", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}, 
   {"Year": "2016", "NL": "3", "DE": "0", "BE": "5", "FR": "4"}, 
   {"Year": "2017", "NL": "4", "DE": "0", "BE": "5", "FR": "3"}, 
   {"Year": "2018", "NL": "5", "DE": "0", "BE": "5", "FR": "2"}, 
   {"Year": "2019", "NL": "6", "DE": "0", "BE": "5", "FR": "1"}],
-  "Coffee money": [{"Year": "2014", "The Netherlands": "2", "DE": "0", "BE": "4", "FR": "9"}, 
+  "Coffee money":
+  [{"Year": "2014", "The Netherlands": "2", "DE": "0", "BE": "4", "FR": "9"},
   {"Year": "2015", "NL": "2", "DE": "0", "BE": "4", "FR": "4"}, 
   {"Year": "2016", "NL": "2", "DE": "0", "BE": "4", "FR": "6"}, 
   {"Year": "2017", "NL": "2", "DE": "0", "BE": "4", "FR": "3"}, 
