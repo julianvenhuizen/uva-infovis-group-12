@@ -1,58 +1,4 @@
-// // set the dimensions and margins of the graph
-// var margin = {top: 30, right: 30, bottom: 70, left: 60},
-//     width = 460 - margin.left - margin.right,
-//     height = 400 - margin.top - margin.bottom;
-
-// // append the svg object to the body of the page
-// var svg = d3.select("#barplot")
-//   .append("svg")
-//     .attr("width", width + margin.left + margin.right)
-//     .attr("height", height + margin.top + margin.bottom)
-//   .append("g")
-//     .attr("transform",
-//           "translate(" + margin.left + "," + margin.top + ")");
-
-// // Parse the Data
-// d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv", function(data) {
-
-// console.log(data)
-
-// var testdata = [{"Year": "2014", "Value": "1"}, {"Year": "2015", "Value": "2"}, {"Year": "2016", "Value": "3"}, {"Year": "2017", "Value": "4"}, {"Year": "2018", "Value": "5"}, {"Year": "2019", "Value": "6"}]
-// console.log(testdata)
-
-
-// // X axis
-// var x = d3.scaleBand()
-//   .range([ 0, width ])
-//   .domain(testdata.map(function(d) { return d.Year; }))
-//   .padding(0.2);
-// svg.append("g")
-//   .attr("transform", "translate(0," + height + ")")
-//   .call(d3.axisBottom(x))
-//   .selectAll("text")
-//     .attr("transform", "translate(-10,0)rotate(-45)")
-//     .style("text-anchor", "end");
-
-// // Add Y axis
-// var y = d3.scaleLinear()
-//   .domain([0, 10])
-//   .range([ height, 0]);
-// svg.append("g")
-//   .call(d3.axisLeft(y));
-
-// // Bars
-// svg.selectAll("mybar")
-//   .data(testdata)
-//   .enter()
-//   .append("rect")
-//     .attr("x", function(d) { return x(d.Year); })
-//     .attr("y", function(d) { return y(d.Value); })
-//     .attr("width", x.bandwidth())
-//     .attr("height", function(d) { return height - y(d.Value); })
-//     .attr("fill", "#69b3a2")
-
-// })
-
+// Barchart d3 code
 
 
 // set the dimensions and margins of the graph
@@ -60,35 +6,61 @@ var margin = {top: 10, right: 30, bottom: 10, left: 30},
     width = 420 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
-// append the svg object to the body of the page
-var svg = d3.select("#barplot")
-  .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform",
-          "translate(" + margin.left + "," + margin.top + ")");
 
-// Parse the Data
-function updateBarchart() {
 
-  var testdata = [
-  {"Year": "2014", "The Netherlands": "1", "Belgium": "5", "France": "6"}, 
-  {"Year": "2015", "The Netherlands": "2", "Belgium": "5", "France": "5"}, 
-  {"Year": "2016", "The Netherlands": "3", "Belgium": "5", "France": "4"}, 
-  {"Year": "2017", "The Netherlands": "4", "Belgium": "5", "France": "3"}, 
-  {"Year": "2018", "The Netherlands": "5", "Belgium": "5", "France": "2"}, 
-  {"Year": "2019", "The Netherlands": "6", "Belgium": "5", "France": "1"}]
+function updateBarchart(selectedCountries, selectedBudget) {
 
-  //console.log(testdata)
+  removeOldChart();
+  createNewChart(selectedCountries, selectedBudget);
+}
+
+function removeOldChart() {
+    d3.select("#barplot")
+        .remove();
+}
+
+// Parse the Data interactively (called in europamap.js)
+function createNewChart(selectedCountries, selectedBudget) {
+
+  d3.select("#barplot_container")
+    .append("barplot")
+      .attr("id", "barplot")
+
+  // append the svg object to the body of the page
+  var svg = d3.select("#barplot")
+    .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+
+  var alldata = 
+  
+  {"Total": [{"Year": "2014", "NL": "1", "DE": "0", "BE": "5", "FR": "6"}, 
+  {"Year": "2015", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}, 
+  {"Year": "2016", "NL": "3", "DE": "0", "BE": "5", "FR": "4"}, 
+  {"Year": "2017", "NL": "4", "DE": "0", "BE": "5", "FR": "3"}, 
+  {"Year": "2018", "NL": "5", "DE": "0", "BE": "5", "FR": "2"}, 
+  {"Year": "2019", "NL": "6", "DE": "0", "BE": "5", "FR": "1"}],
+  "Coffee money": [{"Year": "2014", "The Netherlands": "2", "DE": "0", "BE": "4", "FR": "9"}, 
+  {"Year": "2015", "NL": "2", "DE": "0", "BE": "4", "FR": "4"}, 
+  {"Year": "2016", "NL": "2", "DE": "0", "BE": "4", "FR": "6"}, 
+  {"Year": "2017", "NL": "2", "DE": "0", "BE": "4", "FR": "3"}, 
+  {"Year": "2018", "NL": "2", "DE": "0", "BE": "5", "FR": "2"}, 
+  {"Year": "2019", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}]
+  };
+
+  // The selected (part of the) budget
+  var barchartdata = alldata[selectedBudget];
 
   // List of subgroups
-  var subgroups = ["The Netherlands", "Belgium", "France"]
-
-  //console.log(subgroups)
+  var subgroups = selectedCountries
+  //var subgroups = ["The Netherlands", "Belgium", "France"];
 
   // List of groups -> I show them on the X axis
-  var groups = d3.map(testdata, function(d){return(d.Year)}).keys()
+  var groups = d3.map(barchartdata, function(d){return(d.Year)}).keys()
 
   // Add X axis
   var x = d3.scaleBand()
@@ -101,7 +73,7 @@ function updateBarchart() {
 
   // Add Y axis
   var y = d3.scaleLinear()
-    .domain([0, 10]) // !!! this needs to be changed for higher values to be shown !!!
+    .domain([0, 100]) // !!! this needs to be changed for higher values to be shown !!!
     .range([ height, 0 ]);
   svg.append("g")
     .call(d3.axisLeft(y));
@@ -121,7 +93,7 @@ function updateBarchart() {
   svg.append("g")
     .selectAll("g")
     // Enter in data = loop group per group
-    .data(testdata)
+    .data(barchartdata)
     .enter()
     .append("g")
       .attr("transform", function(d) { return "translate(" + x(d.Year) + ",0)"; })

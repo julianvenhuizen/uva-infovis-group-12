@@ -175,6 +175,6 @@ body {
     border-top: 1px solid #C2C2C2;
 }
 
-#barplot {
+#barplot_container {
     background-color: white;
 }
