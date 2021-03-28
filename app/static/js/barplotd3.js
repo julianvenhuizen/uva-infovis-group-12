@@ -3,8 +3,8 @@
 
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 10, left: 30},
-    width = 420 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+    bpwidth = 420 - margin.left - margin.right,
+    bpheight = 400 - margin.top - margin.bottom;
 
 
 
@@ -29,8 +29,8 @@ function createNewChart(selectedCountries, selectedBudget) {
   // append the svg object to the body of the page
   var svg = d3.select("#barplot")
     .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
+      .attr("width", bpwidth + margin.left + margin.right)
+      .attr("height", bpheight + margin.top + margin.bottom)
     .append("g")
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
@@ -66,7 +66,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   // Add X axis
   var x = d3.scaleBand()
       .domain(groups)
-      .range([0, width])
+      .range([0, bpwidth])
       .padding([0.2])
   svg.append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -127,7 +127,7 @@ function createNewChart(selectedCountries, selectedBudget) {
 
     // Add legend
 
-    var legendX = width * .75
+    var legendX = bpwidth * .75
     
     // Add one dot in the legend for each name.
     svg.selectAll("mydots")
