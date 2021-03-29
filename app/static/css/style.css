@@ -57,12 +57,12 @@ body {
   max-height: 100%;
 }
 
-#l-column {
+/* #l-column {
         background-color: #3386AE;
         color: white;
         padding: 40px;
         max-height: 100%;
-    }
+    } */
 #r-column {
         background-color: white;
         padding: 0px;

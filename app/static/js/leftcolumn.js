@@ -10,7 +10,7 @@ var countryNames = {
         "BA": "Bosnia and Herz.",
         "BY": "Belarus",
         "CH": "Switzerland",
-        "CZ": "Czech Rep.",
+        "CZ": "Czechia",
         "DE": "Germany",
         "DK": "Denmark",
         "EE": "Estonia",
@@ -47,7 +47,7 @@ var countryNames = {
 // Displays instructions when no country is selected and otherwise the graphs
 function updateLeftColumn() {
     var instructions = document.getElementById("instructions-panel");
-    var graphs = document.getElementById("graphs-panel");
+    var graphs = document.getElementById("sunburst-box");
 
     // Prints the home screen if there are no countries selected
     if (selectedCountries.length === 0) {
@@ -62,7 +62,7 @@ function updateLeftColumn() {
     } else {
         document.getElementById("title_or_countryname").innerHTML = countryNames[lastSelectedCountry];
 
-        instructions.style.display = 'none';
+        // instructions.style.display = 'none';
         graphs.style.display = 'block';
 
         printCountryList();
