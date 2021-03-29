@@ -193,3 +193,26 @@
     width: 100%;
     z-index: 1;
 }
+
+{% block timeSlider %}
+
+<!-- Timeslider HTML -->
+    <!-- Display year variable as HTML above the timeslider -->
+    
+<div class="slidecontainer">
+    <p class="yeardisplay" id="yeardisplay">
+        2019
+    </p>
+    <p class="minimumyear">
+        2014
+    </p>
+    <!-- The actual timeslider -->
+    <input type="range" min="2014" max="2019" value="2019" class="slider" id="myRange">
+    <p class="maximumyear">
+        2019
+    </p>
+</div>
+
+<!-- JS for timeslider -->
+<script src="static/js/timeslider.js"></script>
+{% endblock %}

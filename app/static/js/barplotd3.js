@@ -22,7 +22,7 @@ function removeOldChart() {
 // Parse the Data interactively (called in europamap.js)
 function createNewChart(selectedCountries, selectedBudget) {
 
-  d3.select("#barplot_container")
+  d3.select("#barplot-box")
     .append("barplot")
       .attr("id", "barplot")
 

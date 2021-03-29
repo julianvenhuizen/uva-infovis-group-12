@@ -1,6 +1,6 @@
 const width = window.innerWidth,
     height = window.innerHeight,
-    maxRadius = Math.min(width, height) / 2 - 5;
+    maxRadius = Math.min(width, height)/1.5;
 
 function updateSunburst(year, country) {
   removeoldSunburst();
@@ -108,15 +108,15 @@ const textFits = d => {
   return d.data.name.length * CHAR_SPACE < perimeter;
 };
 
-d3.select("#sunburst_container")
-  .append("sunburst")
+d3.select("#sunburst-box")
+    .append("sunburst")
     .attr("id", "sunburst")
 
 const svg = d3
   .select('#sunburst')
   .append('svg')
-  .style('width', '35vw')
-  .style('height', '35vh')
+  .style('width', '40vw')
+  .style('height', '60vh')
   .attr('viewBox', `${-width / 2} ${-height / 2} ${width} ${height}`)
   .on('click', () => focusOn()); // Reset zoom on canvas click
 
