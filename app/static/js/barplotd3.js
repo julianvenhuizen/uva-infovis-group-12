@@ -2,13 +2,18 @@
 
 
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 10, left: 30},
-    bpwidth = 420 - margin.left - margin.right,
-    bpheight = 400 - margin.top - margin.bottom;
+var margin = {top: 35, right: 10, bottom: 25, left: 60},
+    bpwidth = document.getElementById('barplot-box').clientWidth - margin.left - margin.right,
+    bpheight = document.getElementById('barplot-box').clientHeight - margin.top - margin.bottom;
 
+var prevhighestnumber = 0;
 
 
 function updateBarchart(selectedCountries, selectedBudget) {
+  //console.log(prevhighestnumber);
+  // if (typeof prevhighestnumber === 'undefined') {
+  //   var prevhighestnumber = 0; // the variable is defined
+  // }
 
   removeOldChart();
   createNewChart(selectedCountries, selectedBudget);
@@ -35,24 +40,6 @@ function createNewChart(selectedCountries, selectedBudget) {
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-//  var alldata =
-//
-//  {"Total":
-//  [{"Year": "2014", "NL": "1", "DE": "0", "BE": "5", "FR": "6"},
-//  {"Year": "2015", "NL": "2", "DE": "0", "BE": "5", "FR": "5"},
-//  {"Year": "2016", "NL": "3", "DE": "0", "BE": "5", "FR": "4"},
-//  {"Year": "2017", "NL": "4", "DE": "0", "BE": "5", "FR": "3"},
-//  {"Year": "2018", "NL": "5", "DE": "0", "BE": "5", "FR": "2"},
-//  {"Year": "2019", "NL": "6", "DE": "0", "BE": "5", "FR": "1"}],
-//  "Coffee money":
-//  [{"Year": "2014", "The Netherlands": "2", "DE": "0", "BE": "4", "FR": "9"},
-//  {"Year": "2015", "NL": "2", "DE": "0", "BE": "4", "FR": "4"},
-//  {"Year": "2016", "NL": "2", "DE": "0", "BE": "4", "FR": "6"},
-//  {"Year": "2017", "NL": "2", "DE": "0", "BE": "4", "FR": "3"},
-//  {"Year": "2018", "NL": "2", "DE": "0", "BE": "5", "FR": "2"},
-//  {"Year": "2019", "NL": "2", "DE": "0", "BE": "5", "FR": "5"}]
-//  };
-
   // The selected (part of the) budget
   var barchartdata = barplot_data[selectedBudget];
 
@@ -62,32 +49,64 @@ function createNewChart(selectedCountries, selectedBudget) {
   // List of groups -> I show them on the X axis
   var groups = d3.map(barchartdata, function(d){return(d.Year)}).keys()
 
+  // text label for the x axis
+  svg.append("text")             
+      .attr("transform",
+            "translate(" + (bpwidth/2) + " ," + 
+                           (bpheight + margin.top - 12) + ")")
+      .style("text-anchor", "middle")
+      .style("font-size", "13px")
+      .text("Year");
+
+  // text label for the y axis
+  svg.append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 5 - margin.left)
+      .attr("x",0 - (bpheight / 2))
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .style("font-size", "13px")
+      .text("Budget (in millions of euros)");
+
+  svg.append("text")             
+      .attr("transform",
+            "translate(" + (bpwidth/2 - margin.left / 2) + " ," + 
+                           (-15) + ")")
+      .style("text-anchor", "middle")
+      .style("font-size", "14px")
+      .text(selectedBudget);
+
   // Add X axis
   var x = d3.scaleBand()
       .domain(groups)
       .range([0, bpwidth])
       .padding([0.2])
   svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + bpheight + ")")
     .call(d3.axisBottom(x).tickSize(0));
 
-  // Add Y axis
+  // Calculate highest value for y-axis
+  highestnums = []
+  for (i = 0; i < subgroups.length; i++) {
+    var thiscountry = subgroups[i];
+    highestnums.push(d3.max(barchartdata, function(d){return(d[thiscountry])}));
+  };
+  var highestnumber = d3.max(highestnums) * 1.1;
+
+  // Initiate y-axis with highest number from previous barchart
   var y = d3.scaleLinear()
-    .range([ height, 0 ])
-    .domain([0, 10000]) // !!! this needs to be changed for higher values to be shown !!!
-    //.domain([0, d3.max(barchartdata, function(subgroups) { return d3.max(subgroups.values, function(d) { return d.value; }); })])
-    ;
-  // var yAxis = svg.append("g")
-  //   .attr("class", "myYaxis")
-  svg.append("g").call(d3.axisLeft(y));
+    .range([ bpheight, 0])
+    .domain([0, prevhighestnumber]);
+  var yAxis = svg.append("g")
+    .attr("class", "myYaxis")
+    .call(d3.axisLeft(y));
 
+  // Update the Y axis with animation
+  y.domain([0, highestnumber]);
+  yAxis.transition().duration(500).call(d3.axisLeft(y));
   
-  // highestnums = []
-  // for (i = 0; i < subgroups.length; i++) {
-  //   highestnums.push(d3.max(barchartdata, d => d.subgroups[i]));
-  // };
-
-  // console.log(highestnums);
+  // Update prevhighestnumber for animating y-axis in next barchart
+  prevhighestnumber = highestnumber;
 
   // Another scale for subgroup position?
   var xSubgroup = d3.scaleBand()
@@ -98,7 +117,17 @@ function createNewChart(selectedCountries, selectedBudget) {
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(['#e41a1c','#377eb8','#4daf4a'])
+    .range(['#66c2a5','#fc8d62','#8da0cb'])
+
+  var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    console.log(d)
+    return "<strong>Budget: </strong>" + selectedBudget + "<br><strong>Country: </strong>" + countryNames[d.key] + "<br><strong>Budget: </strong>" + d.value + " million euro";
+  });
+  
+  svg.call(tip);
 
   // Show the bars (start at 0 height for animation)
   svg.append("g")
@@ -114,19 +143,20 @@ function createNewChart(selectedCountries, selectedBudget) {
       .attr("x", function(d) { return xSubgroup(d.key); })
       .attr("y", function(d) { return y(0); })
       .attr("width", xSubgroup.bandwidth())
-      .attr("height", function(d) { return height - y(0); })
+      .attr("height", function(d) { return bpheight - y(0); })
       .attr("fill", function(d) { return color(d.key); })
+      .on("mouseover", tip.show)
+      .on("mouseout", tip.hide)
       .transition()
-      .duration(400)
+      .duration(200)
       .attr("y", function(d) { return y(d.value); })
-      .attr("height", function(d) { return height - y(d.value); })
-      //.delay(function(d,i){console.log(i) ; return(i*10)})
+      .attr("height", function(d) { return bpheight - y(d.value); })
       ;
 
 
     // Add legend
 
-    var legendX = bpwidth * .75
+    var legendX = bpwidth * .925
     
     // Add one dot in the legend for each name.
     svg.selectAll("mydots")
@@ -134,8 +164,8 @@ function createNewChart(selectedCountries, selectedBudget) {
       .enter()
       .append("circle")
         .attr("cx", legendX)
-        .attr("cy", function(d,i){ return 10 + i*20}) // 100 is where the first dot appears. 25 is the distance between dots
-        .attr("r", 7)
+        .attr("cy", function(d,i){ return 10 - margin.top + i*15}) // 10 is where the first dot appears. 25 is the distance between dots
+        .attr("r", 5)
         .style("fill", function(d){ return color(d)})
 
     // Add one label next to the dot in the legend for each name.
@@ -143,12 +173,12 @@ function createNewChart(selectedCountries, selectedBudget) {
       .data(subgroups)
       .enter()
       .append("text")
-        .attr("x", legendX + 20)
-        .attr("y", function(d,i){ return 10 + i*20}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("x", legendX + 10)
+        .attr("y", function(d,i){ return 10 - margin.top + i*15}) // 100 is where the first dot appears. 25 is the distance between dots
         .style("fill", function(d){ return color(d)})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
-        .style("font-size", "13px")
+        .style("font-size", "11px")
 
 };

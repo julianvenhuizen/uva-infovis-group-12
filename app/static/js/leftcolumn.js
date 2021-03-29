@@ -65,7 +65,7 @@ function updateLeftColumn() {
         // instructions.style.display = 'none';
         graphs.style.display = 'block';
 
-        printCountryList();
+        //printCountryList();
     }
 }
 
