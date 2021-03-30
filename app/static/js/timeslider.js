@@ -5,6 +5,6 @@ slider.oninput = function() {
 	selectedYear = slider.value
   	document.getElementById("yeardisplay").innerHTML = selectedYear;
   	if (selectedCountries.length > 0) {
-  	updateSunburst(selectedYear, lastSelectedCountry);
+  	updateSunburst(selectedYear, FirstSelectedCountry);
 	}
 }

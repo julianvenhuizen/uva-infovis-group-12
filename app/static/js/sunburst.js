@@ -1,5 +1,6 @@
 var abbrev = {
-    'ADMINISTRATION':'Admin'
+    'ADMINISTRATION':'Administration',
+    'SMART AND INCLUSIVE GROWTH':'Growth'
 }
 
 
