@@ -5,15 +5,29 @@ function selectCountry(country) {
 
         // Sets the selected country limit to three
         if (selectedCountries.length > 2) {
-        } else {
-            country.classList.add("selected-country");
+            // TODO: add some kind of tooltip warning about max number of selected countries
+
+        } 
+
+
+        else {
+            //country.classList.add("selected-country");
             selectedCountries = selectedCountries.concat(country.id);
+
+            recolorSelectedCountries(reset = false);
+
         }
     }
     // If country is in array ("selected"): deselect and return to blue color
     else {
-        country.classList.remove("selected-country");
+        //country.classList.remove("selected-country");
+        country.classList.remove("selected-country1");
+        country.classList.remove("selected-country2");
+        country.classList.remove("selected-country3");
         selectedCountries = arrayRemove(selectedCountries, country.id);
+
+        recolorSelectedCountries(reset = false);
+
     }
 
     // Updates variables, text and graphs according to the select
@@ -21,6 +35,7 @@ function selectCountry(country) {
         updateFirstSelectedCountry();
     }
     else {
+        // If no countries are selected, reset selectedBudget as well
         selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
     }
     updateLeftColumn();
@@ -36,3 +51,16 @@ function arrayRemove(arr, value) {
         return ele != value;
     })
 };
+
+function recolorSelectedCountries(reset) {
+    for (var i = 0; i < selectedCountries.length; i++) {
+        var country = document.getElementById(selectedCountries[i]);
+        country.classList.remove("selected-country1");
+        country.classList.remove("selected-country2");
+        country.classList.remove("selected-country3");
+
+        if (reset === false) {
+            country.classList.add("selected-country" + (i+1).toString());
+        }
+    }
+}

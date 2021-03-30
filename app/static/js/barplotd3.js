@@ -2,7 +2,7 @@
 
 
 // set the dimensions and margins of the graph
-var margin = {top: 35, right: 10, bottom: 25, left: 60},
+var margin = {top: 55, right: 20, bottom: 28, left: 60},
     bpwidth = document.getElementById('barplot-box').clientWidth - margin.left - margin.right,
     bpheight = document.getElementById('barplot-box').clientHeight - margin.top - margin.bottom;
 
@@ -53,7 +53,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   svg.append("text")             
       .attr("transform",
             "translate(" + (bpwidth/2) + " ," + 
-                           (bpheight + margin.top - 12) + ")")
+                           (bpheight + 28) + ")")
       .style("text-anchor", "middle")
       .style("font-size", "13px")
       .text("Year");
@@ -61,7 +61,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   // text label for the y axis
   svg.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 5 - margin.left)
+      .attr("y", 0 - margin.left)
       .attr("x",0 - (bpheight / 2))
       .attr("dy", "1em")
       .style("text-anchor", "middle")
@@ -71,7 +71,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   svg.append("text")             
       .attr("transform",
             "translate(" + (bpwidth/2 - margin.left / 2) + " ," + 
-                           (-15) + ")")
+                           (-35) + ")")
       .style("text-anchor", "middle")
       .style("font-size", "14px")
       .text(selectedBudget);
@@ -117,7 +117,7 @@ function createNewChart(selectedCountries, selectedBudget) {
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal()
     .domain(subgroups)
-    .range(['#66c2a5','#fc8d62','#8da0cb'])
+    .range(['#fc8d62', '#66c2a5', '#e78ac3'])
 
   var tip = d3.tip()
   .attr('class', 'd3-tip')
@@ -164,8 +164,8 @@ function createNewChart(selectedCountries, selectedBudget) {
       .enter()
       .append("circle")
         .attr("cx", legendX)
-        .attr("cy", function(d,i){ return 10 - margin.top + i*15}) // 10 is where the first dot appears. 25 is the distance between dots
-        .attr("r", 5)
+        .attr("cy", function(d,i){ return 35 - margin.top + i*17}) // 35 is where the first dot appears. 17 is the distance between dots
+        .attr("r", 6)
         .style("fill", function(d){ return color(d)})
 
     // Add one label next to the dot in the legend for each name.
@@ -174,11 +174,11 @@ function createNewChart(selectedCountries, selectedBudget) {
       .enter()
       .append("text")
         .attr("x", legendX + 10)
-        .attr("y", function(d,i){ return 10 - margin.top + i*15}) // 100 is where the first dot appears. 25 is the distance between dots
+        .attr("y", function(d,i){ return 35 - margin.top + i*17}) // 35 is where the first dot appears. 17 is the distance between dots
         .style("fill", function(d){ return color(d)})
         .text(function(d){ return d})
         .attr("text-anchor", "left")
         .style("alignment-baseline", "middle")
-        .style("font-size", "11px")
+        .style("font-size", "12px")
 
 };
