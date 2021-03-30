@@ -20,6 +20,9 @@ function selectCountry(country) {
     if (selectedCountries.length !== 0) {
         updateFirstSelectedCountry();
     }
+    else {
+        selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
+    }
     updateLeftColumn();
     
     updateSunburst(selectedYear, FirstSelectedCountry);
