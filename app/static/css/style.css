@@ -38,6 +38,7 @@ body {
 #sunburst-box {
   height: auto;
   min-height: 600px;
+  margin-bottom: 2%;
 }
 
 #map-box {
@@ -124,12 +125,10 @@ body {
 /* Timeslider CSS */
 .time-slider {
   width: 100%;
-  margin-bottom: 5%;
 }
 
 .yeardisplay{
   text-align: center;
-  font-size: 250%;
 }
 
 .slidecontainer {
@@ -157,7 +156,7 @@ body {
 /* The slider itself */
 .slider {
   -webkit-appearance: none;
-  width: 79%;
+  width: 78%;
   height: 15px;
   border-radius: 5px;  
   background: #C2C2C2;
