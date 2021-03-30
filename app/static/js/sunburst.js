@@ -1,6 +1,78 @@
 var abbrev = {
     'ADMINISTRATION':'Administration',
-    'SMART AND INCLUSIVE GROWTH':'Growth'
+    'SMART AND INCLUSIVE GROWTH':'Growth',
+    'Competitiveness for growth and jobs':'Competitiveness',
+    'Large infratsructure projects':'Infrastructure',
+    'Implementation and exploitation of European satellite navigation systems (EGNOS and GALILEO)':'EGNOS/GALILEO',
+    'International Thermonuclear Experimental Reactor (ITER)':'ITER',
+    'European Earth Observation Programme (Copernicus)':'EU Earth Observation',
+    'Nuclear decommissioning assistance programmes':'Nuclear Decommissioning',
+    'Common Strategic Framework (CSF) Research and Innovation':'Research & Innovation',
+    'The Framework Programme for Research and Innovation (Horizon 2020)':'Horizon 2020',
+    'Euratom Research and Training Programme':'Euratom',
+    'Programme for the Competitiveness of Enterprises and small and medium-sized enterprises (COSME)':'COSME',
+    'The Union Programme for Education, Training, Youth and Sport (Erasmus+)':'Erasmus+',
+    'European Union Programme for Employment and Social Innovation (EaSI)':'EaSI',
+    'Action Programmes for customs, for taxation and for anti-fraud in the European Union (Customs 2020, Fiscalis 2020 and Anti-Fraud)':'Customs & Taxation',
+    'Connecting Europe Facility (CEF)':'CEF',
+    'Energy':'Energy',
+    'Transport':'Transport',
+    'Informations and Communications Technology (ICT)':'ICT',
+    'Energy projects to aid economic recovery (EERP)':'EERP',
+    'Decentralised agencies':'Decentralised agencies',
+    'Other actions and programmes':'Other',
+    'Pilot projects and preparatory actions':'Pilot project',
+    'Actions financed under the prerogatives of the Commission and specific competences conferred to the Commission':'European Commission',
+    'Economic, social and territorial cohesion':'Economic cohesion',
+    'Investment for growth and jobs':'Growth investment',
+    'Less developed regions (Regional convergence)':'Less developed regions',
+    'Transition regions':'Transition regions',
+    'More developed regions (Competitiveness)':'More developed regions',
+    'Outermost and sparsely populated regions':'Sparsely populated regions',
+    'Cohesion fund (including contribution to the Connecting Europe Facility CEF)':'Cohesion fund',
+    'European territorial cooperation':'Territorial cooperation',
+    'Technical assistance and innovative actions':'Other assistance',
+    'Technical assistance':'Technical assistance',
+    'Innovative actions':'Innovative actions',
+    'Fund for European Aid to the Most Deprived':'European aid',
+    'Youth Employment Initiative (specific top-up allocation)':'Youth employment',
+    'Decentralised agencies':'Decentralised agencies',
+    'Other actions and programmes':'Other',
+    'Actions financed under the prerogatives of the Commission and specific competences conferred to the Commission':'European Commission',
+    'SUSTAINABLE GROWTH: NATURAL RESOURCES':'Natural Resources',
+    'European Agricultural Guarantee Fund (EAGF) - Market related expenditure and direct payments':'EU Agricultural Fund',
+    'European Agricultural Guarantee Fund (EAGF) - Market related expenditure and direct payments':'EAGF',
+    'Direct aid':'Direct aid',
+    'Export refunds':'Export refunds',
+    'Storage':'Storage',
+    'Other':'Other',
+    'European Agricultural Fund for Rural Development (EAFRD)':'EAFRD',
+    'European Maritime and Fisheries Fund (EMFF), Regional Fisheries Management Organisations (RFMOs) and Sustainable Fisheries Agreements (SFAs)':'Fishery',
+    'Programme for the Environment and Climate Action (LIFE+)':'Climate (LIFE+)',
+    'Decentralised agencies':'Decentralised agencies',
+    'Pilot projects and preparatory actions':'Pilot projects',
+    'SECURITY AND CITIZENSHIP':'Security & Citizenship',
+    'Asylum, Migration and Integration Fund':'Immigration',
+    'Internal Security Fund':'Internal Security',
+    'IT Systems':'IT Systems',
+    'Justice Programme':'Justice Programme',
+    'Rights, Equality and Citizenship programme':'Rights & Equality',
+    'Union Civil Protection Mechanism - Heading 3':'Civil protection',
+    'Europe for Citizens':'Europe for Citizens',
+    'Food and feed':'Food & feed',
+    'Union action in the field of health (Health Programme)':'Health Programme',
+    'Consumer programme':'Consumer Programme',
+    'GLOBAL EUROPE':'Global Europe',
+    'Instrument for Pre-accession Assistance (IPA)':'IPA',
+    'other':'Other',
+    'COMPENSATIONS':'Compensations',
+    'NEGATIVE RESERVE':'Negative Reserve',
+    'SPECIAL INSTRUMENTS':'Special Instruments',
+    'Total Expenditure':'Total Expenditure',
+    'European Maritime and Fisheries Fund (EMFF)':'EMFF',
+    'Instrument for Emergency Support within the Union (IES)':'Emergency Support',
+    'Creative Europe Programme':'Creative Programme',
+    'Sustainable Fisheries Partnership Agreements (SFAs) and compulsory contributions to Regional Fisheries':'Sustainable Agreements'
 }
 
 
@@ -44,14 +116,53 @@ function createNewSunburst(year, country) {
     require()('@observablehq/flare').then(data => {
         console.log(data);
         const root = partition(sunburst_year_data_country);
-        const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length));
-    
+        // const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length));
+
+        const dark = [
+          '#B03A2E',
+          '#2874A6',
+          '#148F77',
+          '#B9770E',
+          '#884EA0'
+        ];
+        
+        const mid = [
+          '#E74C3C',
+          '#3498DB',
+          '#1ABC9C',
+          '#F39C12',
+          '#AF7AC5'
+        ];
+        
+        const light = [
+          '#F1948A',
+          '#85C1E9',
+          '#76D7C4',
+          '#F8C471',
+          '#D7BDE2'
+        ];
+        
+        const lightest = [
+          '#FADBD8',
+          '#D6EAF8',
+          '#D1F2EB',
+          '#FDEBD0',
+          '#EBDEF0'
+        ];
+
+        const palettes = [dark, mid, light, lightest];
+        const lightGreenFirstPalette = palettes
+          .map(d => d)
+          .reduce((a, b) => a.concat(b));
+        
+        const color = d3.scaleOrdinal(lightGreenFirstPalette);
+
         root.each(d => d.current = d);
     
         const svg = d3.select('#partitionSVG')
                 .style("width", "100%")
                 .style("height", "auto")
-                .style("font", "5px sans-serif");
+                .style("font", "6px sans-serif");
     
         const g = svg.append("g")
                 .attr("id", 'sunburst')
@@ -87,7 +198,7 @@ function createNewSunburst(year, country) {
                 .attr("fill-opacity", d => +labelVisible(d.current))
                 .attr("transform", d => labelTransform(d.current))
                 .text(d => abbrev[d.data.name]);
-    
+                
         const parent = g.append("circle")
                 .datum(root)
                 .attr("r", radius)
