@@ -1,6 +1,6 @@
 var selectedCountries = [];
-var lastSelectedCountry;
-var selectedYear = 2014;
+var FirstSelectedCountry;
+var selectedYear = 2019;
 var selectedBudget = "SMART AND INCLUSIVE GROWTH";
 var countryNames = {
         "AL": "Albania",
@@ -60,12 +60,33 @@ function updateLeftColumn() {
 
     // Prints the graphs corresponding to the selected countries
     } else {
-        document.getElementById("title_or_countryname").innerHTML = countryNames[lastSelectedCountry];
+        document.getElementById("title_or_countryname").innerHTML = countryNames[FirstSelectedCountry];
 
         // instructions.style.display = 'none';
         graphs.style.display = 'block';
 
         //printCountryList();
+        selectfromcountrylist = document.getElementById("selectfromcountrylist");
+
+        selectfromcountrylist.innerHTML = ""; 
+
+        if (selectedCountries.length !== 0) {
+            for(var i = 0; i < selectedCountries.length; i++) {
+                var opt = selectedCountries[i];
+
+                var el = document.createElement("option");
+                el.text = opt;
+                el.value = opt;
+
+                selectfromcountrylist.add(el)
+            }
+
+        }
+
+        // $('#selectfromcountrylist').empty();
+        // $.each(selectedCountries, function(i, p) {
+        // $('#selectfromcountrylist').append($('<option></option>').val(p).html(p));
+        // });
     }
 }
 
@@ -86,7 +107,16 @@ function printCountryList() {
     }
 }
 
-function updateLastSelectedCountry() {
+function updateFirstSelectedCountry() {
     nItems = selectedCountries.length;
-    lastSelectedCountry = selectedCountries[nItems-1];
+    FirstSelectedCountry = selectedCountries[0];
+}
+
+function selectCountryforSunburst() {
+    var e = document.getElementById("selectfromcountrylist");
+    FirstSelectedCountry = e.value;
+
+    document.getElementById("title_or_countryname").innerHTML = countryNames[FirstSelectedCountry];
+
+    updateSunburst(selectedYear, FirstSelectedCountry);
 }

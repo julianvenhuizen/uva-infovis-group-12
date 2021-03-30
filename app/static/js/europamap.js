@@ -17,11 +17,12 @@ function selectCountry(country) {
     }
 
     // Updates variables, text and graphs according to the select
-    updateLastSelectedCountry();
+    if (selectedCountries.length !== 0) {
+        updateFirstSelectedCountry();
+    }
     updateLeftColumn();
-//    console.log("last country");
-//    console.log(lastSelectedCountry);
-    updateSunburst(selectedYear, lastSelectedCountry);
+    
+    updateSunburst(selectedYear, FirstSelectedCountry);
 
     updateBarchart(selectedCountries, selectedBudget);
 }
