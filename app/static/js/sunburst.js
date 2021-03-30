@@ -92,7 +92,7 @@ function removeoldSunburst() {
 
 function createNewSunburst(year, country) {
     var sunburst_year_data_country = sunburst_data[year][country];
-    console.log(sunburst_year_data_country);
+    //console.log(sunburst_year_data_country);
 
     const arc = d3.arc()
             .startAngle(d => d.x0)
@@ -114,7 +114,7 @@ function createNewSunburst(year, country) {
     const {require} = new observablehq.Library;
 
     require()('@observablehq/flare').then(data => {
-        console.log(data);
+        //console.log(data);
         const root = partition(sunburst_year_data_country);
         // const color = d3.scaleOrdinal().range(d3.quantize(d3.interpolateRainbow, data.children.length));
 
@@ -207,6 +207,17 @@ function createNewSunburst(year, country) {
                 .on("click", clicked);
     
         function clicked(p) {
+            // Change selected budget if we select a sub-category of budgets
+            if (p.data.name !== countryNames[FirstSelectedCountry]) {
+                selectedBudget = p.data.name
+            }
+            else {
+                selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
+            }
+
+            // Update barchart with budget selected in sunburst
+            updateBarchart(selectedCountries, selectedBudget)
+
             parent.datum(p.parent || root);
     
             root.each(d => d.target = {

@@ -1,7 +1,7 @@
 var selectedCountries = [];
 var FirstSelectedCountry;
 var selectedYear = 2019;
-var selectedBudget = "SMART AND INCLUSIVE GROWTH";
+var selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES";
 var countryNames = {
         "AL": "Albania",
         "AT": "Austria",
@@ -119,4 +119,7 @@ function selectCountryforSunburst() {
     document.getElementById("title_or_countryname").innerHTML = countryNames[FirstSelectedCountry];
 
     updateSunburst(selectedYear, FirstSelectedCountry);
+
+    selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
+    updateBarchart(selectedCountries, selectedBudget);
 }
