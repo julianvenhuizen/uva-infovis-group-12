@@ -17,33 +17,37 @@
 
 <div class="container" id="main-content-container">
     <div class="row">
-        <div id="instructions-panel">
-		<h2 class="page-title">EU Budget 2014-2019 Dashboard</h2>
-            <h3>Visualizing expenditures of the European Union</h3>
-            <p> This dashboard serves to display the European Union (EU) expenditure records between 2014 and 2019. 
-                It serves as a tool to establish transparency for EU citizens, by easily allowing everyone to track EU priorities, development ambitions and election promises. 
-                The spending categories can be distinguished into 5 focus areas, which you can explore by clicking the blue buttons.</strong> 
-            </p>
-		             
-            <h3>Instructions</h3>
-            <ol>
-                <li>Select up to three (3) EU member states using the map</li>
-                <li>Click through the budget categories displayed in the sunburst chart</li>
-                <li>Drag the time slider to switch between budgets of different years</li>
-                <li>Select one budget category and compare its development over time across countries using the bar chart</li>
-                <li>Press the Reset button to reset all choices</li>
-                <li>To learn more about the spending categories and EU Budget, select the blue buttons on the bottom of the page</li>
-            </ol>
-        </div>
+        <h2 class="page-title">Dashboard - Visualizing expenditures of the EU budget (2014-2019)</h2>
+        
     </div>
     
     <div id="first-content-row" class="row">
         <div class="col-12 col-xl-8 no-padding">
             <div id="sunburst-box" class="dashbox">
-                <h4 id="title_or_countryname">Select country</h4>
-                <select name="selectfromcountrylist" id="selectfromcountrylist" onchange="selectCountryforSunburst();"></select>
-                <svg id="partitionSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
-                <div id="sunburst"></div>
+                <h4 id="title_or_countryname">Our project</h4>
+
+                <div id="instructions-panel">
+                <p> This dashboard serves to display the European Union (EU) expenditure records between 2014 and 2019. 
+                It serves as a tool to establish transparency for EU citizens, by easily allowing everyone to track EU priorities, development ambitions and election promises. 
+                The spending categories can be distinguished into 5 focus areas, which you can explore by clicking the blue buttons.</strong> 
+                </p>
+                     
+                <h3>Instructions</h3>
+                <ol>
+                    <li>Select up to three (3) EU member states using the map</li>
+                    <li>Click through the budget categories displayed in the sunburst chart</li>
+                    <li>Drag the time slider to switch between budgets of different years</li>
+                    <li>Select one budget category and compare its development over time across countries using the bar chart</li>
+                    <li>Press the Reset button to reset all choices</li>
+                    <li>To learn more about the spending categories and EU Budget, select the blue buttons on the bottom of the page</li>
+                </ol>
+                </div>
+
+                <div id="sunburst-panel">
+                    <select name="selectfromcountrylist" id="selectfromcountrylist" onchange="selectCountryforSunburst();"></select>
+                    <svg id="partitionSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
+                    <div id="sunburst"></div>
+                </div>
                 <script src="static/js/sunburst.js"></script>
             </div>
 

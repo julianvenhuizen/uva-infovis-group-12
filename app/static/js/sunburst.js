@@ -92,7 +92,7 @@ function removeoldSunburst() {
 
 function createNewSunburst(year, country) {
     var sunburst_year_data_country = sunburst_data[year][country];
-    console.log(sunburst_year_data_country);
+    //console.log(sunburst_year_data_country);
 
     const arc = d3.arc()
             .startAngle(d => d.x0)

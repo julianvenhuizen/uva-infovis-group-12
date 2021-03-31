@@ -47,16 +47,18 @@ var countryNames = {
 // Displays instructions when no country is selected and otherwise the graphs
 function updateLeftColumn() {
     var instructions = document.getElementById("instructions-panel");
-    var graphs = document.getElementById("sunburst-box");
+    var graphs = document.getElementById("sunburst-panel");
 
     // Prints the home screen if there are no countries selected
     if (selectedCountries.length === 0) {
-        console.log("Array is empty!")
 
         document.getElementById("title_or_countryname").innerHTML = "Our Project";
 
+        graphs.style.display = 'none'
         instructions.style.display = 'block';
-        graphs.style.display = 'none';
+        removeoldSunburst()
+
+        //graphs.style.display = 'none';
 
     // Prints the graphs corresponding to the selected countries
     } else {
@@ -64,6 +66,7 @@ function updateLeftColumn() {
 
         // instructions.style.display = 'none';
         graphs.style.display = 'block';
+        instructions.style.display = 'none';
 
         //printCountryList();
         selectfromcountrylist = document.getElementById("selectfromcountrylist");
