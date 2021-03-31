@@ -52,7 +52,7 @@ function updateLeftColumn() {
     // Prints the home screen if there are no countries selected
     if (selectedCountries.length === 0) {
 
-        document.getElementById("title_or_countryname").innerHTML = "Our Project";
+        document.getElementById("title_or_countryname").innerHTML = "";
 
         graphs.style.display = 'none'
         instructions.style.display = 'block';

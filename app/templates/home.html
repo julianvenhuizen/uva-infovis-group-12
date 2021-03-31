@@ -15,32 +15,45 @@
     //console.log(barplot_data);
 </script>
 
+<script>
+    $('a').click(function(){
+    $('html, body').animate({
+        scrollTop: $( $(this).attr('href') ).offset().top
+    }, 500);
+    return false;
+});
+</script>
+
+<div class="right-corner-container">
+    <button class="right-corner-container-button">
+        <a href="#myAnchor" rel="" id="anchor1" class="anchorLink"><i class="fa fa-question"></i></a>
+    </button>
+</div>
+
 <div class="container" id="main-content-container">
     <div class="row">
-        <h2 class="page-title">Dashboard - Visualizing expenditures of the EU budget (2014-2019)</h2>
-        
+        <div class="col-12 no-padding">
+            <h2 class="page-title">Dashboard - Visualizing expenditures of the EU budget (2014-2019)</h2>
+            <p>This dashboard serves to display the European Union (EU) expenditure records between 2014 and 2019.
+                It serves as a tool to establish transparency for EU citizens, by easily allowing everyone to track EU priorities, development ambitions and election promises.
+                The spending categories can be distinguished into 5 focus areas, which you can explore by clicking the buttons at the bottom of the page.</p>
+        </div>
     </div>
     
     <div id="first-content-row" class="row">
         <div class="col-12 col-xl-8 no-padding">
             <div id="sunburst-box" class="dashbox">
-                <h4 id="title_or_countryname">Our project</h4>
+                <h4 id="title_or_countryname"></h4>
 
                 <div id="instructions-panel">
-                <p> This dashboard serves to display the European Union (EU) expenditure records between 2014 and 2019. 
-                It serves as a tool to establish transparency for EU citizens, by easily allowing everyone to track EU priorities, development ambitions and election promises. 
-                The spending categories can be distinguished into 5 focus areas, which you can explore by clicking the blue buttons.</strong> 
-                </p>
-                     
-                <h3>Instructions</h3>
-                <ol>
-                    <li>Select up to three (3) EU member states using the map</li>
-                    <li>Click through the budget categories displayed in the sunburst chart</li>
-                    <li>Drag the time slider to switch between budgets of different years</li>
-                    <li>Select one budget category and compare its development over time across countries using the bar chart</li>
-                    <li>Press the Reset button to reset all choices</li>
-                    <li>To learn more about the spending categories and EU Budget, select the blue buttons on the bottom of the page</li>
-                </ol>
+                    <h5>Instructions</h5>
+                    <ol>
+                        <li>Select up to <strong>three</strong> EU member states using the <strong>map</strong></li>
+                        <li>Click through the <strong>budget categories</strong> displayed in the <strong>sunburst chart</strong></li>
+                        <li>Drag the <strong>time slider</strong> to switch between budgets of <strong>different years</strong></li>
+                        <li>Select one budget category and compare its <strong>development over time</strong> across countries using the <strong>bar chart</strong></li>
+                        <li>Press the <span id="instructions-alert">'Reset all values'</span> button to reset your choices</li>
+                    </ol>
                 </div>
 
                 <div id="sunburst-panel">
@@ -172,6 +185,7 @@
     <div id="information-row" class="row">
         <div class="col-12 no-padding">
         <div id="information-box" class="dashbox">
+            <a name="myAnchor" id="myAnchor"></a> 
             <h3>Spending Categories</h3>
     
             <div id="button-bar">

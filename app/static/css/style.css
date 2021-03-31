@@ -260,20 +260,30 @@ h2, h3 {
 }
 
 #panel-contents {
-        width: 90%;
-        height: 90%;
-        margin: 0 auto;
-        display: grid;
-        place-items: center;
-        grid-template-areas: "inners";
-        z-index: -2;
-    }
+  width: 90%;
+  height: 90%;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "inners";
+  z-index: -2;
+}
 
 #instructions-panel {
-    grid-area: inners;
-    height: 100%;
-    width: 100%;
-    z-index: 2;
+  grid-area: inners;
+  height: 100%;
+  z-index: 2;
+  color: #858585;
+  line-height: 2rem;
+}
+
+#instructions-panel strong {
+  color: #1492fc;
+}
+
+#instructions-alert {
+  font-weight: bold;
+  color: #dc3545;;
 }
 
 #graphs-panel {
@@ -324,4 +334,40 @@ h2, h3 {
   margin: -1px 0 0 0;
   top: 100%;
   left: 0;
+}
+
+/* Style for right corner button */
+
+.right-corner-container {
+  position: fixed;
+  right: 24px;
+  bottom: 20px;
+  z-index: 99;
+}
+
+.right-corner-container .right-corner-container-button {
+  height: 54px;
+  width: 54px;
+  border: none;
+  background-color: #75bffd;
+  border-radius: 0.25rem;
+  /*Transform the square into rectangle, sync that value with the width/height*/
+  transition: all 300ms;
+  /*Animation to close the button (circle)*/
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+    0 2px 4px rgba(0,0,0,0.07), 
+    0 4px 8px rgba(0,0,0,0.07), 
+    0 8px 16px rgba(0,0,0,0.07),
+    0 16px 32px rgba(0,0,0,0.07), 
+    0 32px 64px rgba(0,0,0,0.07);
+  cursor: pointer;
+}
+
+.right-corner-container-button:hover {
+  background-color: #1492fc;
+}
+
+.right-corner-container-button a {
+  style: none;
+  color: #fff;
 }
