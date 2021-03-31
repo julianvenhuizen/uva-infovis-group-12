@@ -40,14 +40,52 @@ function createNewChart(selectedCountries, selectedBudget) {
       .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-  // The selected (part of the) budget
-  var barchartdata = barplot_data[selectedBudget];
 
   // List of subgroups
   var subgroups = selectedCountries;
 
+  if (selectedBudget === 'Total expenditures') {
+    // Calculate total expenditure for selected countries (only if total is selected)
+    var topnodes = ['SMART AND INCLUSIVE GROWTH', 'SUSTAINABLE GROWTH: NATURAL RESOURCES', 'SECURITY AND CITIZENSHIP', 'GLOBAL EUROPE', 'ADMINISTRATION', 'COMPENSATIONS', 'SPECIAL INSTRUMENTS']
+    var allyears = ['2014', '2015', '2016', '2017', '2018', '2019']
+
+    // list of dicts (for each year) with year:year and countryid: value
+    var totals = []
+
+    for (var year = 0; year < allyears.length; year++) {
+      var subarr = {};
+      var thisyear = allyears[year];
+      subarr['Year'] = thisyear;
+
+      for (var c = 0; c < subgroups.length; c++) {
+        var thiscountry = subgroups[c]
+        var thisvalue = 0
+
+        for (var b = 0; b < topnodes.length; b++) {
+          var thisbudget = topnodes[b] 
+
+          thisvalue += barplot_data[thisbudget][year][thiscountry]
+          }
+        subarr[thiscountry] = (Math.round(thisvalue * 10) / 10).toFixed(1)
+
+        }
+      totals.push(subarr)
+      }
+    // Data = totals if no part of budget is selected
+    var barchartdata = totals
+    console.log(totals)
+    } else {
+      // Data = the selected (part of the) budget
+      var barchartdata = barplot_data[selectedBudget];
+    }
+
   // List of groups -> I show them on the X axis
   var groups = d3.map(barchartdata, function(d){return(d.Year)}).keys()
+
+  //console.log(barplot_data[topnodes[0]])
+  //console.log(totals)
+
+
 
   // text label for the x axis
   svg.append("text")             
@@ -86,12 +124,25 @@ function createNewChart(selectedCountries, selectedBudget) {
     .call(d3.axisBottom(x).tickSize(0));
 
   // Calculate highest value for y-axis
+
   highestnums = []
   for (i = 0; i < subgroups.length; i++) {
     var thiscountry = subgroups[i];
-    highestnums.push(d3.max(barchartdata, function(d){return(d[thiscountry])}));
+    if (selectedBudget === 'Total expenditures') {
+      numberasstring = d3.max(barchartdata, function(d){return(d[thiscountry])});
+      highestnums.push(parseFloat(numberasstring));
+    } else {
+      numberasstring = d3.max(barchartdata, function(d){return(d[thiscountry])});
+      highestnums.push(parseFloat(numberasstring));
+    }
   };
+
+  console.log(highestnums)
+  //console.log(barchartdata)
   var highestnumber = d3.max(highestnums) * 1.1;
+
+
+  console.log(highestnumber)
 
   // Initiate y-axis with highest number from previous barchart
   var y = d3.scaleLinear()
@@ -123,7 +174,6 @@ function createNewChart(selectedCountries, selectedBudget) {
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    console.log(d)
     return "<strong>Budget: </strong>" + selectedBudget + "<br><strong>Country: </strong>" + countryNames[d.key] + "<br><strong>Budget: </strong>" + d.value + " million euro";
   });
   

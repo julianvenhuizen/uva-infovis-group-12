@@ -1,7 +1,7 @@
 var selectedCountries = [];
 var FirstSelectedCountry;
 var selectedYear = 2019;
-var selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES";
+var selectedBudget = "Total expenditures";
 var countryNames = {
         "AL": "Albania",
         "AT": "Austria",
@@ -10,7 +10,7 @@ var countryNames = {
         "BA": "Bosnia and Herz.",
         "BY": "Belarus",
         "CH": "Switzerland",
-        "CZ": "Czechia",
+        "CZ": "Czech Rep.",
         "DE": "Germany",
         "DK": "Denmark",
         "EE": "Estonia",
@@ -75,7 +75,7 @@ function updateLeftColumn() {
                 var opt = selectedCountries[i];
 
                 var el = document.createElement("option");
-                el.text = opt;
+                el.text = countryNames[opt];
                 el.value = opt;
 
                 selectfromcountrylist.add(el)
@@ -119,6 +119,6 @@ function selectCountryforSunburst() {
 
     updateSunburst(selectedYear, FirstSelectedCountry);
 
-    selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
+    selectedBudget = "Total expenditures"
     updateBarchart(selectedCountries, selectedBudget);
 }

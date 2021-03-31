@@ -35,7 +35,7 @@ function selectCountry(country) {
     }
     else {
         // If no countries are selected, reset selectedBudget as well
-        selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
+        selectedBudget = "Total expenditures"
     }
     updateLeftColumn();
     

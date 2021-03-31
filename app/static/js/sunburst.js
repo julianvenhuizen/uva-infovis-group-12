@@ -212,7 +212,7 @@ function createNewSunburst(year, country) {
                 selectedBudget = p.data.name
             }
             else {
-                selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES"
+                selectedBudget = "Total expenditures"
             }
 
             // Update barchart with budget selected in sunburst

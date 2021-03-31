@@ -16,7 +16,7 @@ function reset_board() {
 	selectedCountries = [];
 	FirstSelectedCountry;
 	selectedYear = 2019;
-	selectedBudget = "SUSTAINABLE GROWTH: NATURAL RESOURCES";
+	selectedBudget = "Total expenditures";
 
 	//Reset timeslider state
 	document.getElementById("yeardisplay").innerHTML = selectedYear;
