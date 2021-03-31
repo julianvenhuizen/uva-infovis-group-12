@@ -68,6 +68,7 @@ function createNewChart(selectedCountries, selectedBudget) {
           }
         subarr[thiscountry] = (Math.round(thisvalue * 10) / 10).toFixed(1)
 
+
         }
       totals.push(subarr)
       }
@@ -129,11 +130,15 @@ function createNewChart(selectedCountries, selectedBudget) {
   for (i = 0; i < subgroups.length; i++) {
     var thiscountry = subgroups[i];
     if (selectedBudget === 'Total expenditures') {
-      numberasstring = d3.max(barchartdata, function(d){return(d[thiscountry])});
-      highestnums.push(parseFloat(numberasstring));
+      testarray = barchartdata[thiscountry]
+      console.log(testarray)
+      numberasstring = d3.max(barchartdata, function(d){return(parseFloat(d[thiscountry]))});
+      highestnums.push(numberasstring);
     } else {
-      numberasstring = d3.max(barchartdata, function(d){return(d[thiscountry])});
-      highestnums.push(parseFloat(numberasstring));
+      testarray = barchartdata[thiscountry]
+      console.log(testarray)
+      numberasstring = d3.max(barchartdata, function(d){return(parseFloat(d[thiscountry]))});
+      highestnums.push(numberasstring);
     }
   };
 
