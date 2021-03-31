@@ -56,6 +56,10 @@ body {
   min-width: 210px;
 }
 
+#button-box {
+  margin-bottom: 4%;
+}
+
 #information-box {
   margin-top: 4%;
 }

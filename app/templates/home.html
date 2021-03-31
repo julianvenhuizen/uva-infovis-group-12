@@ -56,6 +56,10 @@
             </div>
         </div>
         <div class="col-6 col-xl-4 no-padding">
+            <div id="button-box">
+                <input class="btn btn-outline-danger btn-block" type="reset" value="Reset all values" onclick="reset_board()"></input>
+                <script src="static/js/reset.js"></script>
+            </div>
             <div id="map-box" class="dashbox">
                 <div class="EUC eu-countries">
                     <svg version="1.2" viewbox="250 120 600 525" xmlns="http://www.w3.org/2000/svg">
@@ -152,8 +156,6 @@
                     </svg>
                     <script src="static/js/europamap.js"></script>
                 </div>
-                <button type="button" onclick="reset_board()">Reset All</button>
-                <script src="static/js/reset.js"></script>
             </div>
             <div id="barplot-box" class="dashbox">
                 <div id="barplot"></div>
@@ -256,8 +258,6 @@
             
     
                 </div>
-
-
             
                 <!-- Bootstrap JS for collapse buttons-->
                 <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
