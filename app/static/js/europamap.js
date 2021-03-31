@@ -6,6 +6,7 @@ function selectCountry(country) {
         // Sets the selected country limit to three
         if (selectedCountries.length > 2) {
             // TODO: add some kind of tooltip warning about max number of selected countries
+            
 
         } 
 

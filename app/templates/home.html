@@ -18,9 +18,7 @@
 <div class="container" id="main-content-container">
     <div class="row">
         <div id="instructions-panel">
-            <h2 class="page-title">InfoVis Project - Getting Insights in the EU Budget</h2>
-            <script src="static/js/reset.js"></script>
-            <button type="button" onclick="reset_board()">Reset All</button>
+            <h2 class="page-title">Visualizing Insights in the EU Budget</h2>
             <p class="txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque sollicitudin diam in feugiat mollis. Vivamus ligula ante, vulputate sed erat vitae, commodo imperdiet erat. In lectus felis, interdum eu sem vitae, dignissim finibus neque.</p>
         </div>
     </div>
@@ -28,7 +26,7 @@
     <div id="first-content-row" class="row">
         <div class="col-12 col-xl-8 no-padding">
             <div id="sunburst-box" class="dashbox">
-                <h4 id="title_or_countryname">Select Country</h4>
+                <h4 id="title_or_countryname">Select country</h4>
                 <select name="selectfromcountrylist" id="selectfromcountrylist" onchange="selectCountryforSunburst();"></select>
                 <svg id="partitionSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
                 <div id="sunburst"></div>
@@ -140,9 +138,12 @@
                     </svg>
                     <script src="static/js/europamap.js"></script>
                 </div>
-    <!--             <text class="label" id="country-name">
-                    <ul id="selected-countries-list"></ul>
-                </text> -->
+                <button type="button" onclick="reset_board()">Reset All</button>
+                <p>You have selected: </p>
+                <span id="c1"></span>
+                <span id="c2"></span>
+                <span id="c3"></span>
+                <script src="static/js/reset.js"></script>
             </div>
             <div id="barplot-box" class="dashbox">
                 <div id="barplot"></div>

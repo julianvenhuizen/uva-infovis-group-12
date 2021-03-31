@@ -2,9 +2,11 @@
 /* Possible font weights: 400, 500, 700 */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
+/* https://www.colorhexa.com/1492fc */
+
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: #F0F8FF;
+  background-color: #e9f5ff;
 }
 
 #main-content-container {
@@ -30,8 +32,12 @@ body {
   background-color: #ffffff;
   border: 1px solid #ededed;
   border-radius: 10px;
-  -webkit-box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.5); 
-  box-shadow: 2px 2px 5px -2px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+              0 2px 4px rgba(0,0,0,0.07), 
+              0 4px 8px rgba(0,0,0,0.07), 
+              0 8px 16px rgba(0,0,0,0.07),
+              0 16px 32px rgba(0,0,0,0.07), 
+              0 32px 64px rgba(0,0,0,0.07);
   margin-bottom: 4%;
 }
 
@@ -102,20 +108,20 @@ body {
     }
 
 #UA, #AL, #AD, #AM, #BA, #BY, #CH, #GE, #IS, #LI, #MD, #ME, #MK, #NO, #RS, #TR, #XK, #GB{
-        fill: #C2C2C2;
+        fill: #d1d1d1;
         stroke: white;
         stroke-width: 1px;
 }
 
 .eu-countries path {
-        fill: #3386AE;
+        fill: #afdafe;
         stroke: white;
         stroke-width: 1px;
         transition: fill 0.3s;
     }
 
 .eu-countries path:hover {
-        fill: #0F5A7F;
+        fill: #88c8fd;
     }
 
 /*.selected-country {
@@ -143,6 +149,7 @@ body {
 
 .yeardisplay{
   text-align: center;
+  font-weight: 700;
 }
 
 .slidecontainer {
