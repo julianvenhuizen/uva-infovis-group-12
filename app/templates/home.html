@@ -41,7 +41,7 @@
     </div>
     
     <div id="first-content-row" class="row">
-        <div class="col-12 col-xl-8 no-padding">
+        <div class="col-md-7 no-padding">
             <div id="sunburst-box" class="dashbox">
                 <h4 id="title_or_countryname"></h4>
 
@@ -58,7 +58,7 @@
 
                 <div id="sunburst-panel">
                     <select name="selectfromcountrylist" id="selectfromcountrylist" onchange="selectCountryforSunburst();"></select>
-                    <svg id="partitionSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
+                    <svg id="partitionSVG" viewBox="-70 0 500 500"></svg>
                     <div id="sunburst"></div>
                 </div>
                 <script src="static/js/sunburst.js"></script>
@@ -72,7 +72,7 @@
                 <script src="static/js/timeslider.js"></script>
             </div>
         </div>
-        <div class="col-6 col-xl-4 no-padding">
+        <div class="col-md-5 no-padding">
             <div id="button-box">
                 <input class="btn btn-outline-danger btn-block" type="reset" value="Reset all values" onclick="reset_board()"></input>
                 <script src="static/js/reset.js"></script>
