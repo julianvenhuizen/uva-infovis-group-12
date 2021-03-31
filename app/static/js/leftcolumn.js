@@ -80,7 +80,6 @@ function updateLeftColumn() {
 
                 selectfromcountrylist.add(el)
             }
-
         }
 
         // $('#selectfromcountrylist').empty();

@@ -18,29 +18,22 @@
 <div class="container" id="main-content-container">
     <div class="row">
         <div id="instructions-panel">
-		<h2 class="page-title"><strong>EU Buget 2014-2019 Dashboard</strong></h2>
-            <h3>Getting insights into the expenditures of the the European Union</h3>
-            <br />
-            <p class="txt"> <strong>This dashboard serves to display the European Union(EU) expenditure records between 2014 - 2019. 
-                It serve as a tool to establish transparency for EU citizens, by easily allowing everyone to track of EU priorities, development ambitions and election promises. 
-                The spending categories can be distinguished into 5 focus areas, which you can expolore by clicking the blue bottons.</strong> 
+		<h2 class="page-title">EU Budget 2014-2019 Dashboard</h2>
+            <h3>Visualizing expenditures of the European Union</h3>
+            <p> This dashboard serves to display the European Union (EU) expenditure records between 2014 and 2019. 
+                It serves as a tool to establish transparency for EU citizens, by easily allowing everyone to track EU priorities, development ambitions and election promises. 
+                The spending categories can be distinguished into 5 focus areas, which you can explore by clicking the blue buttons.</strong> 
             </p>
-		 <link rel="stylesheet" href="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/css/bootstrap.css">
-            <script src="https://kit.fontawesome.com/2e3a8c2dc6.js" crossorigin="anonymous"></script>
-            <!-- JavaScript Bundle with Popper -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-
-            <p class="txt">
-                <h3><strong>Instructions</strong></h3>
-                <ol class="Categories">
-                    <li><strong>Select up to 3 EU member using the map</strong></li>
-                    <li><strong>Click through the budget categories displayed in the sunburst chart</strong></li>
-                    <li><strong>Dragg the time slider to switch between budgets of different years</strong></li>
-                    <li><strong>Select one budget category and comapre its development over time across countris</strong></li>
-                    <li><strong>Press the Reset buttonn to deselct all choices</strong></li>
-                    <li><strong>To learn more about the spending categories and EU Budget, select the blue buttons on the bottom of the page</strong></li>
-                </ol>
-            </p>
+		             
+            <h3>Instructions</h3>
+            <ol>
+                <li>Select up to three (3) EU member states using the map</li>
+                <li>Click through the budget categories displayed in the sunburst chart</li>
+                <li>Drag the time slider to switch between budgets of different years</li>
+                <li>Select one budget category and compare its development over time across countries using the bar chart</li>
+                <li>Press the Reset button to reset all choices</li>
+                <li>To learn more about the spending categories and EU Budget, select the blue buttons on the bottom of the page</li>
+            </ol>
         </div>
     </div>
     
@@ -160,10 +153,6 @@
                     <script src="static/js/europamap.js"></script>
                 </div>
                 <button type="button" onclick="reset_board()">Reset All</button>
-                <p>You have selected: </p>
-                <span id="c1"></span>
-                <span id="c2"></span>
-                <span id="c3"></span>
                 <script src="static/js/reset.js"></script>
             </div>
             <div id="barplot-box" class="dashbox">
@@ -173,135 +162,126 @@
         </div>
     </div>
 
- <div id="body">
-        <div class="row">
-            <div id="instructions-panel">
-                <h3><strong>Spending Categories</strong></h3>
-                <div class="container">
-                    <div class="row gy-5">
-                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                          <br />
-              
-                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#firstcoll" aria-expanded="false" aria-controls="CollapseID" ><i class="fa fa-chart-line"></i>
-                             Growth
-                          </button>
-                          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#secondcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-seedling"></i>
-                            Natural Resources
-                        </button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#thirdcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-user-lock"></i>
-                            Security & Citizenship
-                        </button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#fourthcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-globe-europe"></i>
-                            Global Europe
-                        </button>
-                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#fifthcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-coins"></i>
-                            Administration
-                        </button>
-              
-                          <div class="collapse" id="firstcoll"> 
-                              <div class="card card-body"> 
-                                    <h5>Smart & Inclusive Growth  <i class="fa fa-chart-line"></i></h5>
-                                        <p>Since fosereting propserity is one of the core values of the EU, 
-                                            this category is one of the biiggest the biggest expenditure in the budget. 
-                                            It includes funding for programs focusing on education, research, innovation 
-                                            as well as transportation, telecommunication and energy infrastructure for economic, 
-                                            social and terretroial cohesion. Some of the biggest projects in 2019 included
-                                            <ul>
-                                                <li>CSF - Common Strategic Framework Research and Innovation</li>
-                                                <li>Horizon 2020 - The Framework Programme for Research and Innovation </li>
-                                                <li>Erasmus+ - The Union Programme for Education, Training and Sport </li>
-                                                <li>EGNOS and GALILEO - Implementation and exploitation of European satellite navigation systems</li>
-                                                <li>Copernicus - European Earth Observation Programme</li> 
-                                                <li>CEF - Connecting Europe Facility</li>
-                                            </ul>
-                                        </p>
-                                  </div>
-                          </div>
-                          <div class="collapse" id="secondcoll">
-                            <div class="card card-body">
-                                <h5>Sustainable Growth & Natural Resources   <i class="fas fa-seedling"></i></h5>
-                                <p> Another large buget retainer is reserved for investments in the agriculture and natural resource maintainance.
-                                    This is due to the fact that the majority of agricultural initiatives are funded through the common EU budget, thereby
-                                    replacing national expenditure to a large extend. Some of the largest projects in 2019 included
-                                    <ul>
-                                        <li>EAGF - European Agricultural Guarantee Fund - Market related expenditure and direct payments</li>
-                                        <li>EAFRD - European Agricultural Fund for Rural Development</li>
-                                        <li>EMFF - European Maritime and Fisheries Fund</li>
-                                        <li>SFAs - Sustainable Fisheries Partnership Agreements and compulsory contributions to Regional Fisheries</li>
-                                        <li>Life - Programme for the Environment and Climate Action</li>
-                                    </ul>
-                                </p>
-                            </div>    
-                        </div>
-                        <div class="collapse" id="thirdcoll">
-                            <div class="card card-body">
-                                <h5>Security & Citizenship   <i class="fas fa-user-lock"></i></h5>
-                                <p> Ensuring the safety and well-being of citizens as another key priority defined in the EU budgte. 
-                                    This bucket covers home affairs, border protection, immigration and asylum policy, public health, consumer
-                                    protection, culture, youth, civil protection and dialogue with citizens
-                                    It mainly funds decentralized EU agencies that enforce EU policy, such as Frontex, ENISA and Europol. 
-                                    Some of the largest expenditure categories include
-                                    <ul>
-                                        <li>Decentralised agencies</li>
-                                        <li>Asylum, Migration and Integration Fund</li>
-                                        <li>Internal Security Fund</li>
-                                        <li>Food and feed</li>
-                                        <li>Creative Europe</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="collapse" id="fourthcoll">
-                            <div class="card card-body">
-                                <h5>Global Europe   <i class="fas fa-globe-europe"></i></h5>
-                                <p> Another portion of the budget is resereved to cover all external 
-                                    action regarding foreign policy by the EU,
-                                    such as development assistance and humanitarian aid.</p>
-                            </div>    
-                        </div>
-                        <div class="collapse" id="fifthcoll">
-                            <div class="card card-body">
-                                <h5>Administration   <i class="fas fa-coins"></i></h5>
-                                <p>A small amount of the budget is set aside for the administartive costs all European 
-                                    institutions, inclduing  staff salaries, pensions, buildings, information technology, trainings, translation and European
-                                    schools, as well as negative reserves and other special instruments.
-                                </p>
-                            </div>  
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              
-                  <!-- jQuery first, then Bootstrap JS. for collaps buttons-->
-                  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-                  <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+    <div id="information-row" class="row">
+        <div class="col-12 no-padding">
+        <div id="information-box" class="dashbox">
+            <h3>Spending Categories</h3>
     
-                  <br />
-                  <h4><small>What is the EU budget?</small></h4>
-                  <p>The EU budget is an investment budget which represents around 2% of all EU public spending, and aims to finance policies carried out at European level. 28 countires, displayed in blue on the map,
-                      contribute and benefit from this budget. While mainly sponsoring initiatives to facilitate the European single market for economic, social and territorial cohesion, 
-                      funding is also allocated to infrastructure for healthcare, education, research, culture, transport and space. Moreover, the EU budget covers costs
-                      to enforce foreign policy, border protection laws, justice cooperations and humanitarian aid. 
-                  </p>
-      
-                  <h4><small>Who sets the EU budget?</small></h4>
-                  <p>On an annual basis, the European Commission propses a budget plan, which
-                      is passed on to the Council of the European Union (representing member states) for unanimous approval 
-                      and assent of the European Parliament (representing EU citizens). The anual budget remains within the scope
-                      predetermined within thee Multiannual financial framework, which sets out the long-term financial goals for five to seven years in advance.
-                   </p>
-      
-                   <a href="https://ec.europa.eu/info/strategy/eu-budget_en">Discover the official EU budget website</a>
-                   <br />
-                   <a href="https://ec.europa.eu/info/sites/info/files/about_the_european_commission/eu_budget/budget-brochure-a5-17-05_interactive.pdf">Learn more about the 2019 EU budget</a>
-                   <br />
-                   <br />
-                   <p>
-                          
-                   </p>
+            <div id="button-bar">
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#firstcoll" aria-expanded="false" aria-controls="CollapseID" ><i class="fa fa-chart-line"></i>
+                    Growth</button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#secondcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-seedling"></i>
+                    Natural Resources</button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#thirdcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-user-lock"></i>
+                    Security & Citizenship</button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#fourthcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-globe-europe"></i>
+                    Global Europe</button>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#fifthcoll" aria-expanded="false" aria-controls="CollapseID"><i class="fas fa-coins"></i>
+                    Administration</button>
+            </div>
+            
+                    <div class="collapse" id="firstcoll">
+                        <div class="card card-body"> 
+                        <h5>Smart & Inclusive Growth <i class="fa fa-chart-line"></i></h5>
+                        <p> Since foresting propserity is one of the core values of the EU, 
+                        this category is one of the biggest expenditures in the budget. 
+                        It includes funding for programs focusing on education, research, innovation 
+                        as well as transportation, telecommunication and energy infrastructure for economic, 
+                        social and terretorial cohesion. Some of the biggest projects in 2019 included:
+                        </p>
+                            <ul>
+                                <li>CSF - Common Strategic Framework Research and Innovation</li>
+                                <li>Horizon 2020 - The Framework Programme for Research and Innovation </li>
+                                <li>Erasmus+ - The Union Programme for Education, Training and Sport </li>
+                                <li>EGNOS and GALILEO - Implementation and exploitation of European satellite navigation systems</li>
+                                <li>Copernicus - European Earth Observation Programme</li> 
+                                <li>CEF - Connecting Europe Facility</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="secondcoll">
+                        <div class="card card-body">
+                        <h5>Sustainable Growth & Natural Resources <i class="fas fa-seedling"></i></h5>
+                        <p> Another large budget retainer is reserved for investments in the agriculture and natural resource maintainance.
+                        This is due to the fact that the majority of agricultural initiatives are funded through the common EU budget, thereby
+                        replacing national expenditure to a large extend. Some of the largest projects in 2019 included:
+                        </p>
+                            <ul>
+                                <li>EAGF - European Agricultural Guarantee Fund - Market related expenditure and direct payments</li>
+                                <li>EAFRD - European Agricultural Fund for Rural Development</li>
+                                <li>EMFF - European Maritime and Fisheries Fund</li>
+                                <li>SFAs - Sustainable Fisheries Partnership Agreements and compulsory contributions to Regional Fisheries</li>
+                                <li>Life - Programme for the Environment and Climate Action</li>
+                            </ul>
+                        </p>
+                        </div>    
+                    </div>
+
+                    <div class="collapse" id="thirdcoll">
+                        <div class="card card-body">
+                        <h5>Security & Citizenship <i class="fas fa-user-lock"></i></h5>
+                        <p> Ensuring the safety and well-being of citizens is another key priority defined in the EU budget. 
+                        This bucket covers home affairs, border protection, immigration and asylum policy, public health, consumer
+                        protection, culture, youth, civil protection and dialogue with citizens
+                        It mainly funds decentralized EU agencies that enforce EU policy, such as Frontex, ENISA and Europol. 
+                        Some of the largest expenditure categories include:</p>
+                            <ul>
+                                <li>Decentralised agencies</li>
+                                <li>Asylum, Migration and Integration Fund</li>
+                                <li>Internal Security Fund</li>
+                                <li>Food and Feed</li>
+                                <li>Creative Europe</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="collapse" id="fourthcoll">
+                        <div class="card card-body">
+                        <h5>Global Europe <i class="fas fa-globe-europe"></i></h5>
+                        <p> Another portion of the budget is reserved to cover all external 
+                        action regarding foreign policy by the EU,
+                        such as development assistance and humanitarian aid.</p>
+                        </div>    
+                    </div>
+
+                    <div class="collapse" id="fifthcoll">
+                        <div class="card card-body">
+                        <h5>Administration <i class="fas fa-coins"></i></h5>
+                        <p>A small amount of the budget is set aside for the administartive costs all European 
+                        institutions, inclduing  staff salaries, pensions, buildings, information technology, trainings, translation and European
+                        schools, as well as negative reserves and other special instruments.</p>
+                        </div>  
+            
     
                 </div>
-            </div> 
-        </div> 
+
+
+            
+                <!-- Bootstrap JS for collapse buttons-->
+                <script src="https://cdn.rawgit.com/twbs/bootstrap/v4-dev/dist/js/bootstrap.js"></script>
+
+                <h5>What is the EU budget?</h5>
+                <p>The EU budget is an investment budget which represents around 2% of all EU public spending, and aims to finance policies carried out at European level. A total of 28 countries, displayed in blue on the map,
+                    contribute to and benefit from this budget. While mainly sponsoring initiatives to facilitate the European single market for economic, social and territorial cohesion, 
+                    funding is also allocated to infrastructure for healthcare, education, research, culture, transport and space. Moreover, the EU budget covers costs
+                    to enforce foreign policy, border protection laws, justice cooperations and humanitarian aid. 
+                </p>
+    
+                <h5>Who sets the EU budget?</h5>
+                <p>On an annual basis, the European Commission propses a budget plan, which
+                    is passed on to the Council of the European Union (representing member states) for unanimous approval 
+                    and assent of the European Parliament (representing EU citizens). The annual budget remains within the scope
+                    predetermined within the Multiannual financial framework, which sets out the long-term financial goals for five to seven years in advance.
+                </p>
+    
+                <ul>
+                    <li><a href="https://ec.europa.eu/info/strategy/eu-budget_en">Discover the official EU budget website</a></li>
+                    <li><a href="https://ec.europa.eu/info/sites/info/files/about_the_european_commission/eu_budget/budget-brochure-a5-17-05_interactive.pdf">Learn more about the 2019 EU budget</a>    </li>
+                </ul>             
+            
+        </div>
+    </div> 
 </div>
 {% endblock %}
