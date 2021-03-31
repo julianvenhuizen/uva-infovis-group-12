@@ -74,7 +74,7 @@ function createNewChart(selectedCountries, selectedBudget) {
       }
     // Data = totals if no part of budget is selected
     var barchartdata = totals
-    console.log(totals)
+    //console.log(totals)
     } else {
       // Data = the selected (part of the) budget
       var barchartdata = barplot_data[selectedBudget];
@@ -131,23 +131,23 @@ function createNewChart(selectedCountries, selectedBudget) {
     var thiscountry = subgroups[i];
     if (selectedBudget === 'Total expenditures') {
       testarray = barchartdata[thiscountry]
-      console.log(testarray)
+      //console.log(testarray)
       numberasstring = d3.max(barchartdata, function(d){return(parseFloat(d[thiscountry]))});
       highestnums.push(numberasstring);
     } else {
       testarray = barchartdata[thiscountry]
-      console.log(testarray)
+      //console.log(testarray)
       numberasstring = d3.max(barchartdata, function(d){return(parseFloat(d[thiscountry]))});
       highestnums.push(numberasstring);
     }
   };
 
-  console.log(highestnums)
+  //console.log(highestnums)
   //console.log(barchartdata)
   var highestnumber = d3.max(highestnums) * 1.1;
 
 
-  console.log(highestnumber)
+  //console.log(highestnumber)
 
   // Initiate y-axis with highest number from previous barchart
   var y = d3.scaleLinear()

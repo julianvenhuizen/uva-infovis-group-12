@@ -92,7 +92,7 @@ function removeoldSunburst() {
 
 function createNewSunburst(year, country) {
     var sunburst_year_data_country = sunburst_data[year][country];
-    //console.log(sunburst_year_data_country);
+    console.log(sunburst_year_data_country);
 
     const arc = d3.arc()
             .startAngle(d => d.x0)
@@ -105,7 +105,7 @@ function createNewSunburst(year, country) {
     const partition = data => {
         const root = d3.hierarchy(data)
                 .sum(d => d.size)
-                .sort((a, b) => b.value - a.value);
+                //.sort((a, b) => b.value - a.value); // Adding this makes it so that colors are not always the same when switching countries (due to size order of budgets being different)
         return d3.partition()
                 .size([2 * Math.PI, root.height + 1])
                 (root);
